@@ -56,7 +56,7 @@ collections:
     label_singular: Event
     folder: src/pages/events
     create: true
-    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}_{{name}}"
     fields:
       - { name: name, label: Event name, widget: string }
       - { name: date, label: Date, widget: datetime }
