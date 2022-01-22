@@ -1,7 +1,7 @@
 backend:
   name: github
-  repo: your-username/your-repo-name
-  branch: main
+  repo: alexling540/gn-test
+  branch: master
 
 media_folder: static/assets
 public_folder: /assets
