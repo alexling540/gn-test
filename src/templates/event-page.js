@@ -23,8 +23,8 @@ const EventPageTemplate = ({ name, date, description, image }) => {
   );
 };
 
-const EventPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
+const EventPage = ({ data: { markdownRemark } }) => {
+  const { frontmatter, html } = markdownRemark;
 
   return (
     <Layout>
@@ -50,9 +50,15 @@ const EventPage = ({ data }) => {
 };
 
 const eventPageQuery = graphql`
-  query EventPage {
-    site {
-      siteMetadata {
+  query EventPage($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      html
+      frontmatter {
+        title
+        date
+        description
+        image
+        name
         title
       }
     }
