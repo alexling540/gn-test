@@ -1,0 +1,76 @@
+backend:
+  name: github
+  repo: your-username/your-repo-name
+  branch: main
+
+media_folder: static/assets
+public_folder: /assets
+
+collections:
+  - name: people
+    label: People
+    folder: src/pages/people
+    create: true
+    fields:
+      - { name: firstName, label: First name, widget: string }
+      - { name: lastName, label: Last name, widget: string }
+      - { name: intro, label: Introduction, widget: text }
+      - { name: twitterHandle, label: Twitter, widget: string }
+
+  - name: pages
+    label: Pages
+    files:
+      - file: src/pages/team/team.md
+        label: Team
+        name: team
+        fields:
+          - name: president
+            label: President
+            widget: relation
+            collection: people
+            search_fields: [firstName, lastName]
+            value_field: firstName
+
+          - name: vicePresident
+            label: Vice President
+            widget: relation
+            collection: people
+            search_fields: [firstName, lastName]
+            value_field: firstName
+
+          - name: officers
+            label: Officers
+            widget: list
+            fields:
+              - name: person
+                label: Person
+                widget: relation
+                collection: people
+                search_fields: [firstName, lastName]
+                value_field: firstName
+
+              - { name: position, label: Position, widget: string }
+
+  - name: events
+    label: Events
+    label_singular: Event
+    folder: src/pages/events
+    create: true
+    fields:
+      - { name: name, label: Event name, widget: string }
+      - { name: date, label: Date, widget: datetime }
+      - {
+          name: image,
+          label: Banner image,
+          widget: image,
+          allow_multiple: false,
+        }
+      - { name: description, label: Description, widget: text }
+
+  - name: Projects
+    label: Projects
+    label_singular: Project
+    folder: src/pages/projects
+    create: true
+    fields:
+      - { name: name, label: Project name, widget: string }

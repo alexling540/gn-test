@@ -1,0 +1,17 @@
+.divider {
+  display: flex;
+  gap: 20px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1 1 auto;
+  border-bottom: 5px solid blue;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.divider img {
+  margin: auto;
+}
