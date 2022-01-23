@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import Typography from "@mui/material/Typography";
 
 import Layout from "../components/layout/layout";
 import Divider from "../components/divider";
@@ -6,8 +7,7 @@ import Divider from "../components/divider";
 const TeamPage = () => {
   return (
     <Layout>
-      Team
-      <Divider />
+      <Typography variant="h4">Team</Typography>
     </Layout>
   );
 };

@@ -1,15 +1,15 @@
-import * as React from "react";
-
-import Layout from "../../components/layout/layout";
+import React from "react";
 
 import Typography from "@mui/material/Typography";
+
+import Layout from "../../components/layout/layout";
 
 const EventsIndexPage = () => {
   return (
     <Layout>
-      <Typography variant="h1">Events</Typography>
-      <Typography variant="h2">Upcoming events</Typography>
-      <Typography variant="h2">Previous events</Typography>
+      <Typography variant="h4">Events</Typography>
+      <Typography variant="h5">Upcoming events</Typography>
+      <Typography variant="h5">Previous events</Typography>
     </Layout>
   );
 };

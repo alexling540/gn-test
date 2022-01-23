@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "gatsby";
 
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
 
 import DscLogo from "../../images/logo.svg";
 // import EmailIcon from "../images/icon_email.svg";
@@ -10,8 +9,6 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
-
-import "./footer.css";
 
 const Footer = () => {
   const footerIcons = [
@@ -25,16 +22,19 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="footer">
+    <Box
+      component="footer"
+      sx={{ marginTop: "2rem", background: "black", padding: "3em" }}
+    >
       <Grid
         container
         direction="column"
         rowSpacing={3}
         alignItems="center"
-        justifyContent="space-around"
+        justifyContent="space-between"
       >
         <Grid item>
-          <img id="footer-logo" src={DscLogo} height={50} />
+          <img src={DscLogo} height={40} />
         </Grid>
         <Grid
           container
@@ -45,14 +45,14 @@ const Footer = () => {
         >
           {footerIcons.map(({ icon: Icon, link }, idx) => (
             <Grid item key={idx}>
-              <IconButton component={Link} to={link} size="large">
-                <Icon htmlColor="white" />
-              </IconButton>
+              <a href={link}>
+                <Icon htmlColor="white" fontSize="large" />
+              </a>
             </Grid>
           ))}
         </Grid>
       </Grid>
-    </footer>
+    </Box>
   );
 };
 

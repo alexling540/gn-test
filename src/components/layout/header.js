@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-// import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
+import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 
 import { Button } from "gatsby-theme-material-ui";
 
@@ -39,53 +39,79 @@ const Header = ({ window, siteTitle }) => {
 
   return (
     <React.Fragment>
-      <AppBar position="sticky">
+      <AppBar position="sticky" color="default">
         <Toolbar variant="dense">
-          <Box sx={{ flexGrow: 1 }}>
-            <Link to="/">
-              <img
-                class="header-logo"
-                src={Logo}
-                width={200}
-                alt="A Gatsby astronaut"
-              />
-            </Link>
-          </Box>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            columnSpacing={2}
+            sx={{ display: { xs: "none", md: "flex" } }}
+          >
+            <Grid item xs="auto">
+              <Link to="/">
+                <img
+                  className="header-logo"
+                  src={Logo}
+                  height={24}
+                  alt="A Gatsby astronaut"
+                />
+              </Link>
+            </Grid>
+            <Grid item xs></Grid>
             {links.map(({ to, text }, index) => (
+              <Grid item key={index} xs="auto">
+                <Button
+                  component={Link}
+                  to={to}
+                  variant="text"
+                  color="primary"
+                  size="small"
+                >
+                  {text}
+                </Button>
+              </Grid>
+            ))}
+            <Grid item xs="auto">
               <Button
                 component={Link}
-                to={to}
-                variant="text"
-                color="secondary"
-                key={index}
+                to="/join"
+                variant="contained"
+                disableElevation
+                size="small"
               >
-                {text}
+                Join Us
               </Button>
-            ))}
-            <Button
-              component={Link}
-              to="/join"
-              variant="contained"
-              disableElevation
-            >
-              Join Us
-            </Button>
-          </Box>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            sx={{ display: { md: "none" } }}
           >
-            <MenuIcon />
-          </IconButton>
+            <Grid item>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <Typography variant="h6" component="div">
+                {siteTitle}
+              </Typography>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
       <Drawer
         container={container}
-        anchor="right"
+        anchor="left"
         variant="temporary"
         open={mobileOpen}
         onClose={handleDrawerToggle}
@@ -93,7 +119,7 @@ const Header = ({ window, siteTitle }) => {
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: "block", sm: "none" },
+          display: { xs: "block", md: "none" },
           "& .MuiDrawer-paper": { boxSizing: "border-box", width: 200 },
         }}
       >

@@ -597,5 +597,5 @@ pre tt:after {
 }
 
 #main {
-  min-height: 70vh;
+  min-height: calc(100vh - 309px);
 }
