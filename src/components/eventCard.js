@@ -1,13 +1,15 @@
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
-
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+import { Link } from "gatsby";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 
 const EventCard = ({ name, timestamp, description, link }) => {
   return (
@@ -19,7 +21,9 @@ const EventCard = ({ name, timestamp, description, link }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button>View</Button>
+        <Button component={Link} to={link}>
+          View
+        </Button>
         <Button>RSVP</Button>
       </CardActions>
     </Card>
@@ -30,6 +34,7 @@ EventCard.propTypes = {
   name: PropTypes.string.isRequired,
   timestamp: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 export default EventCard;

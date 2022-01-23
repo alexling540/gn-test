@@ -1,14 +1,14 @@
 import React from "react";
-
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import { Box, Grid } from "@mui/material";
 
 import DscLogo from "../../images/logo.svg";
 // import EmailIcon from "../images/icon_email.svg";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import {
+  Facebook as FacebookIcon,
+  Instagram as InstagramIcon,
+  LinkedIn as LinkedInIcon,
+  Twitter as TwitterIcon,
+} from "@mui/icons-material";
 
 const Footer = () => {
   const footerIcons = [

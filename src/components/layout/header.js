@@ -1,25 +1,32 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-
-import AppBar from "@mui/material/AppBar";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-
+import {
+  AppBar,
+  Divider,
+  Drawer,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { Button } from "gatsby-theme-material-ui";
 
-import MenuIcon from "@mui/icons-material/Menu";
+import {
+  Event as EventIcon,
+  Home as HomeIcon,
+  Menu as MenuIcon,
+  People as PeopleIcon,
+  AccountTree as ProjectIcon,
+} from "@mui/icons-material";
+import Logo from "../../images/logo.svg";
 
 import "./header.css";
-
-import Logo from "../../images/logo.svg";
 
 const Header = ({ window, siteTitle }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -32,9 +39,9 @@ const Header = ({ window, siteTitle }) => {
     window !== undefined ? () => window().document.body : undefined;
 
   const links = [
-    { to: "/team", text: "Team" },
-    { to: "/events", text: "Events" },
-    { to: "/projects", text: "Projects" },
+    { to: "/team", text: "Team", icon: <PeopleIcon /> },
+    { to: "/events", text: "Events", icon: <EventIcon /> },
+    { to: "/projects", text: "Projects", icon: <ProjectIcon /> },
   ];
 
   return (
@@ -126,9 +133,20 @@ const Header = ({ window, siteTitle }) => {
         <Toolbar variant="dense" />
         <Divider />
         <List>
-          {links.map(({ to, text }, index) => (
-            <ListItem button component={Link} to={to} key={index}>
-              <ListItemText>{text}</ListItemText>
+          <ListItem disablePadding>
+            <ListItemButton component={Link} to="/">
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
+          {links.map(({ to, text, icon }, index) => (
+            <ListItem disablePadding key={index}>
+              <ListItemButton component={Link} to={to}>
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
             </ListItem>
           ))}
         </List>
@@ -137,6 +155,9 @@ const Header = ({ window, siteTitle }) => {
           to="/join"
           variant="contained"
           disableElevation
+          sx={{
+            margin: "0 10px",
+          }}
         >
           Join Us
         </Button>

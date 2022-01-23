@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-
-import Typography from "@mui/material/Typography";
+import { Button, Typography } from "@mui/material";
 
 import Layout from "../components/layout/layout";
 
@@ -51,7 +50,9 @@ const NotFoundPage = () => {
             </>
           ) : null}
           <br />
-          <Link to="/">Go home</Link>.
+          <Button component={Link} to="/">
+            Go home
+          </Button>
         </Typography>
       </div>
     </Layout>

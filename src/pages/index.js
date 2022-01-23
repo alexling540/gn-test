@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { Box, Button, Typography } from "@mui/material";
 
 import Layout from "../components/layout/layout";
 import Divider from "../components/divider";
@@ -22,8 +19,8 @@ const IndexPage = () => {
           backgroundImage: `linear-gradient(0deg, white 0%, rgba(0,0,0,0.5) 20%), url(${background})`,
           backgroundSize: "auto, cover",
           backgroundPosition: "0 0, center",
-          padding: "5em 2em",
           color: "white",
+          padding: { xs: "5em 16px", sm: "5em 24px" },
           margin: { xs: "0 -16px", sm: "0 -24px" },
         }}
       >
