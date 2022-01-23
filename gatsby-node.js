@@ -62,12 +62,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions;
-  const typeDefs = `
-    type markdownRemark implements Node @dontInfer {
-      frontmatter
-    }
-  `;
-  createTypes(typeDefs);
-};
+// exports.createSchemaCustomization = ({ actions }) => {
+//   const { createTypes } = actions;
+//   const typeDefs = `
+//     type markdownRemark implements Node @dontInfer {
+//       frontmatter
+//     }
+//   `;
+//   createTypes(typeDefs);
+// };
