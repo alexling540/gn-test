@@ -4,6 +4,7 @@ module.exports = {
     title: "Developer Student Club @ TAMU",
   },
   plugins: [
+    "gatsby-theme-material-ui",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",

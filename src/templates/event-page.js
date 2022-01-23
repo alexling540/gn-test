@@ -1,17 +1,19 @@
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
 import Typography from "@mui/material/Typography";
 
-import Layout from "../components/layout";
+import Layout from "../components/layout/layout";
 
 const EventPageTemplate = ({ name, date, description, image }) => {
   return (
-    <>
+    <React.Fragment>
       <div
         style={{
-          background: image ? `url(${image})` : "lightgrey",
+          background: image
+            ? `linear-gradient(90deg, rgb(255, 255, 255) 0%, transparent 25%, transparent 75%, rgb(255, 255, 255) 100%), url(${image})`
+            : "lightgrey",
         }}
       >
         <Typography variant="h1">{name}</Typography>
@@ -19,7 +21,7 @@ const EventPageTemplate = ({ name, date, description, image }) => {
       </div>
 
       <Typography variant="body">{description}</Typography>
-    </>
+    </React.Fragment>
   );
 };
 
@@ -32,7 +34,9 @@ const EventPage = ({ data: { markdownRemark } }) => {
         name={frontmatter.name}
         // content={post.html}
         // contentComponent={HTMLContent}
-        // description={post.frontmatter.description}
+        date={frontmatter.date}
+        description={frontmatter.description}
+        image={frontmatter.image}
         // helmet={
         //   <Helmet titleTemplate="%s | Blog">
         //     <title>{`${post.frontmatter.title}`}</title>

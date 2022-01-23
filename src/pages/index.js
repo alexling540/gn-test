@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 
-import Layout from "../components/layout";
+import Layout from "../components/layout/layout";
 import Divider from "../components/divider";
 import EventCard from "../components/eventCard";
 
