@@ -41,14 +41,16 @@ exports.createPages = async ({ actions, graphql }) => {
         fields: { slug },
         frontmatter: { templateKey },
       } = edge.node;
-      createPage({
-        path: slug,
-        component: path.resolve(`src/templates/${String(templateKey)}.js`),
-        // additional data can be passed via context
-        context: {
-          id,
-        },
-      });
+      if (typeof templateKey !== "undefined") {
+        createPage({
+          path: slug,
+          component: path.resolve(`src/templates/${String(templateKey)}.js`),
+          // additional data can be passed via context
+          context: {
+            id,
+          },
+        });
+      }
     });
   });
 };
