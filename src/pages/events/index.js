@@ -5,8 +5,8 @@ import { Grid, Typography } from "@mui/material";
 import Layout from "../../components/layout/layout";
 import EventCard from "../../components/eventCard";
 
-const EventsIndexPage = ({ data }) => {
-  const { edges } = data.allMarkdownRemark;
+const EventsIndexPage = ({ data: { allMarkdownRemark } }) => {
+  const { edges } = allMarkdownRemark;
 
   return (
     <Layout>

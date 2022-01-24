@@ -26,7 +26,7 @@ const EventPageTemplate = ({ name, date, description, image }) => {
         <div>{date}</div>
       </Box>
 
-      <Typography variant="body">{description}</Typography>
+      <Typography variant="body1">{description}</Typography>
     </React.Fragment>
   );
 };
