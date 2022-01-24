@@ -10,12 +10,20 @@ collections:
   - name: people
     label: People
     folder: src/pages/people
+    slug: "{{firstName}}_{{lastName}}"
     create: true
     fields:
       - { name: firstName, label: First name, widget: string }
       - { name: lastName, label: Last name, widget: string }
       - { name: intro, label: Introduction, widget: text }
-      - { name: twitterHandle, label: Twitter, widget: string }
+      - { name: gitHub, label: GitHub, widget: string, required: false }
+      - { name: linkedIn, label: LinkedIn, widget: string, required: false }
+      - {
+          name: website,
+          label: Personal website,
+          widget: string,
+          required: false,
+        }
 
   - name: pages
     label: Pages

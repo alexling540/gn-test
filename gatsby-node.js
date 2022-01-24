@@ -41,7 +41,8 @@ exports.createPages = async ({ actions, graphql }) => {
         fields: { slug },
         frontmatter: { templateKey },
       } = edge.node;
-      if (typeof templateKey !== "undefined") {
+
+      if (typeof templateKey !== "undefined" && templateKey !== null) {
         createPage({
           path: slug,
           component: path.resolve(`src/templates/${String(templateKey)}.js`),
