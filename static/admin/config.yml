@@ -7,15 +7,22 @@ media_folder: static/assets
 public_folder: /assets
 
 collections:
-  - name: people
-    label: People
-    label_singular: Person
-    folder: src/pages/people
+  - name: member
+    label: Member
+    label_singular: Member
+    folder: src/pages/members
     slug: "{{firstName}}_{{lastName}}"
     create: true
     fields:
       - { name: firstName, label: First name, widget: string }
       - { name: lastName, label: Last name, widget: string }
+      - {
+          name: role,
+          label: Role,
+          widget: select,
+          options: ["President", "Vice President", "Officer", "Member"],
+          default: "Member",
+        }
       - { name: intro, label: Introduction, widget: text }
       - { name: gitHub, label: GitHub, widget: string, required: false }
       - { name: linkedIn, label: LinkedIn, widget: string, required: false }
@@ -25,40 +32,6 @@ collections:
           widget: string,
           required: false,
         }
-
-  - name: pages
-    label: Pages
-    files:
-      - file: src/pages/team/team.md
-        label: Team
-        name: team
-        fields:
-          - name: president
-            label: President
-            widget: relation
-            collection: people
-            search_fields: [firstName, lastName]
-            value_field: firstName
-
-          - name: vicePresident
-            label: Vice President
-            widget: relation
-            collection: people
-            search_fields: [firstName, lastName]
-            value_field: firstName
-
-          - name: officers
-            label: Officers
-            widget: list
-            fields:
-              - name: person
-                label: Person
-                widget: relation
-                collection: people
-                search_fields: [firstName, lastName]
-                value_field: firstName
-
-              - { name: position, label: Position, widget: string }
 
   - name: events
     label: Events
@@ -85,6 +58,7 @@ collections:
     slug: "{{projectName}}"
     fields:
       - { name: name, label: Project name, widget: string }
+      - { name: isActive, label: Active project?, widget: boolean }
       - {
           name: banner,
           label: Project banner,

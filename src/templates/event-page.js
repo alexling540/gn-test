@@ -22,11 +22,15 @@ const EventPageTemplate = ({ name, date, description, banner }) => {
           margin: { xs: "0 -16px", sm: "0 -24px" },
         }}
       >
-        <Typography variant="h4">{name}</Typography>
+        <Typography variant="h4" component="h1">
+          {name}
+        </Typography>
         <div>{date}</div>
       </Box>
 
-      <Typography variant="body1">{description}</Typography>
+      <Typography variant="body1" paragraph>
+        {description}
+      </Typography>
     </React.Fragment>
   );
 };
@@ -57,15 +61,21 @@ const eventPageQuery = graphql`
   query EventPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
-      frontmatter {
-        banner
-        date
-        description
-        name
-      }
+      ...EventMarkdownFrontmatterFragment
+    }
+  }
+`;
+
+const eventMarkdownFrontmatterFragment = graphql`
+  fragment EventMarkdownFrontmatterFragment on MarkdownRemark {
+    frontmatter {
+      banner
+      date
+      description
+      name
     }
   }
 `;
 
 export default EventPage;
-export { EventPageTemplate, eventPageQuery };
+export { EventPageTemplate, eventPageQuery, eventMarkdownFrontmatterFragment };

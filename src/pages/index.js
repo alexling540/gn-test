@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
 import { Box, Button, Typography } from "@mui/material";
 
 import Layout from "../components/layout/layout";
 import Divider from "../components/divider";
-import EventCard from "../components/eventCard";
+import EventsCardGrid from "../components/eventsCardGrid";
 
 import background from "../images/home_background.jpeg";
 
 // markup
-const IndexPage = () => {
+const IndexPage = ({ data: { upcomingEvents } }) => {
   return (
     <Layout>
       <title>Home Page</title>
@@ -24,15 +24,15 @@ const IndexPage = () => {
           margin: { xs: "0 -16px 1.5em", sm: "0 -24px 1.5em" },
         }}
       >
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h3" component="h1" gutterBottom>
           Google Developer Student Club
         </Typography>
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h4" component="div" gutterBottom>
           @Texas A&amp;M University
         </Typography>
       </Box>
 
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" component="h2" gutterBottom>
         About Us
       </Typography>
       <Typography variant="body1" paragraph gutterBottom>
@@ -49,13 +49,34 @@ const IndexPage = () => {
 
       <Divider />
 
-      <Typography variant="h5" gutterBottom>
-        Upcoming Events & Workshops
+      <Typography variant="h5" component="h2" gutterBottom>
+        Upcoming Events &amp; Workshops
       </Typography>
-
-      <EventCard name={"AAAA"} />
+      <EventsCardGrid edges={upcomingEvents.edges} />
     </Layout>
   );
 };
 
+const indexPageQuery = graphql`
+  query {
+    upcomingEvents: allMarkdownRemark(
+      filter: {
+        fields: { collection: { eq: "events" }, isFuture: { eq: true } }
+      }
+      limit: 3
+      sort: { fields: [frontmatter___date], order: ASC }
+    ) {
+      edges {
+        node {
+          ...EventMarkdownFrontmatterFragment
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
+
 export default IndexPage;
+export { indexPageQuery };

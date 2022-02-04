@@ -6,7 +6,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardHeader,
   CardMedia,
   Typography,
 } from "@mui/material";
@@ -14,9 +13,22 @@ import {
 const EventCard = ({ name, timestamp, description, banner, link, width }) => {
   return (
     <Card sx={{ width: width ?? 275, maxWidth: "100%" }}>
-      <CardHeader title={name} subheader={timestamp} />
       {banner && <CardMedia component="img" height="120" image={banner} />}
       <CardContent>
+        <Typography variant="h5" component="div">
+          {name}
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          {new Date(timestamp).toLocaleDateString("en-US", {
+            timeZone: "America/Chicago",
+            // weekday: "long",
+            // year: "numeric",
+            // month: "long",
+            // day: "numeric",
+            dateStyle: "long",
+            timeStyle: "short",
+          })}
+        </Typography>
         <Typography variant="body2" paragraph>
           {description}
         </Typography>

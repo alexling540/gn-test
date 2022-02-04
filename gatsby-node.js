@@ -84,10 +84,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === "MarkdownRemark") {
     const collection = getNode(node.parent).sourceInstanceName;
     const slug = createFilePath({ node, getNode, basePath: "pages" });
+
     createNodeField({
       node,
       name: "collection",
       value: collection,
+    });
+    createNodeField({
+      node,
+      name: "isFuture",
+      value: new Date(node.frontmatter.date) > new Date(),
     });
     createNodeField({
       node,
@@ -96,3 +102,23 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
+
+// exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
+//   const { createTypes } = actions;
+//   const { buildObjectType } = schema;
+
+//   const typeDefs = [
+//     buildObjectType({
+//       name: "MarkdownRemark",
+//       interfaces: ["Node"],
+//       fields: {
+//         isFuture: {
+//           type: "Boolean!",
+//           resolve: (s) => new Date(s.frontmatter.date) > new Date(),
+//         },
+//       },
+//     }),
+//   ];
+
+//   createTypes(typeDefs);
+// };

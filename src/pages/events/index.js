@@ -1,66 +1,56 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Grid, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import Layout from "../../components/layout/layout";
-import EventCard from "../../components/eventCard";
+import Divider from "../../components/divider";
+import EventsCardGrid from "../../components/eventsCardGrid";
 
-const EventsIndexPage = ({ data: { allMarkdownRemark } }) => {
-  const { edges } = allMarkdownRemark;
-
+const EventsIndexPage = ({ data: { upcoming, past } }) => {
   return (
     <Layout>
-      <Typography variant="h4" sx={{ padding: "2em 0 1em" }}>
+      <Typography variant="h4" component="h1" sx={{ padding: "2em 0 1em" }}>
         Events
       </Typography>
-      <Typography variant="h5">Upcoming events</Typography>
-      <Typography variant="h5">Previous events</Typography>
-      {JSON.stringify(edges)}
-      <Grid
-        container
-        direction="row"
-        alignItems="flex-start"
-        columnSpacing={4}
-        rowSpacing={4}
-        sx={{
-          justifyContent: {
-            xs: "center",
-            md: "flex-start",
-          },
-        }}
-      >
-        {edges.map(({ node: { frontmatter, fields } }, idx) => {
-          const { name, date, description, banner } = frontmatter;
-          const { slug } = fields;
-
-          return (
-            <Grid item key={idx}>
-              <EventCard
-                name={name}
-                timestamp={date}
-                description={description}
-                banner={banner}
-                link={slug}
-              />
-            </Grid>
-          );
-        })}
-      </Grid>
+      <Typography variant="h5" component="h2" gutterBottom>
+        Upcoming events
+      </Typography>
+      <EventsCardGrid edges={upcoming.edges} />
+      <Divider />
+      <Typography variant="h5" component="h2" gutterBottom>
+        Past events
+      </Typography>
+      <EventsCardGrid edges={past.edges} />
     </Layout>
   );
 };
 
 const eventsIndexPageQuery = graphql`
   query {
-    allMarkdownRemark(filter: { fields: { collection: { eq: "events" } } }) {
+    upcoming: allMarkdownRemark(
+      filter: {
+        fields: { collection: { eq: "events" }, isFuture: { eq: true } }
+      }
+      sort: { fields: [frontmatter___date], order: ASC }
+    ) {
       edges {
         node {
-          frontmatter {
-            banner
-            date
-            description
-            name
+          ...EventMarkdownFrontmatterFragment
+          fields {
+            slug
           }
+        }
+      }
+    }
+    past: allMarkdownRemark(
+      filter: {
+        fields: { collection: { eq: "events" }, isFuture: { eq: false } }
+      }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          ...EventMarkdownFrontmatterFragment
           fields {
             slug
           }

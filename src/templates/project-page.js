@@ -38,5 +38,19 @@ const projectPageQuery = graphql`
   }
 `;
 
+const projectMarkdownFrontmatterFragment = graphql`
+  fragment ProjectMarkdownFrontmatterFragment on MarkdownRemark {
+    frontmatter {
+      name
+      banner
+      description
+    }
+  }
+`;
+
 export default ProjectPage;
-export { ProjectPageTemplate, projectPageQuery };
+export {
+  ProjectPageTemplate,
+  projectPageQuery,
+  projectMarkdownFrontmatterFragment,
+};

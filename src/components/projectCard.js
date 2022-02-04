@@ -10,10 +10,10 @@ import {
   CardMedia,
 } from "@mui/material";
 
-const ProjectCard = ({ name, icon, banner, description, link }) => {
+const ProjectCard = ({ name, icon, banner, description, link, width }) => {
   return (
-    <Card>
-      <CardHeader title={name} avatar={<Avatar src={icon} />} />
+    <Card sx={{ width: width ?? 275, maxWidth: "100%" }}>
+      <CardHeader title={name} avatar={icon && <Avatar src={icon} />} />
       {banner && <CardMedia component="img" height="120" image={banner} />}
       <CardContent>{description}</CardContent>
       <CardActions>

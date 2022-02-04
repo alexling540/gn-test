@@ -1,6 +1,6 @@
 ---
-name: test 2
-isActive: true
+name: test!!
+isActive: false
 banner: /assets/pepperoni-pizza.png
 description: description
 ---
