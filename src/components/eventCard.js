@@ -11,10 +11,11 @@ import {
   Typography,
 } from "@mui/material";
 
-const EventCard = ({ name, timestamp, description, link }) => {
+const EventCard = ({ name, timestamp, description, banner, link, width }) => {
   return (
-    <Card>
+    <Card sx={{ width: width ?? 275, maxWidth: "100%" }}>
       <CardHeader title={name} subheader={timestamp} />
+      {banner && <CardMedia component="img" height="120" image={banner} />}
       <CardContent>
         <Typography variant="body2" paragraph>
           {description}

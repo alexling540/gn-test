@@ -10,7 +10,7 @@ import {
   Twitter as TwitterIcon,
 } from "@mui/icons-material";
 
-const Footer = () => {
+const Footer = ({ id }) => {
   const footerIcons = [
     { icon: FacebookIcon, link: "https://www.facebook.com/dsc.tamu/" },
     { icon: InstagramIcon, link: "https://www.instagram.com/dsc.tamu" },
@@ -23,6 +23,7 @@ const Footer = () => {
 
   return (
     <Box
+      id={id}
       component="footer"
       sx={{ marginTop: "2rem", background: "black", padding: "3em" }}
     >

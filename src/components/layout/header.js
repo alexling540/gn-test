@@ -28,7 +28,7 @@ import Logo from "../../images/logo.svg";
 
 import "./header.css";
 
-const Header = ({ window, siteTitle }) => {
+const Header = ({ id, window, siteTitle }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -46,7 +46,7 @@ const Header = ({ window, siteTitle }) => {
 
   return (
     <React.Fragment>
-      <AppBar position="sticky" color="default">
+      <AppBar id={id} position="sticky" color="default">
         <Toolbar variant="dense">
           <Grid
             container
@@ -55,7 +55,11 @@ const Header = ({ window, siteTitle }) => {
             columnSpacing={2}
             sx={{ display: { xs: "none", md: "flex" } }}
           >
-            <Grid item xs="auto">
+            <Grid
+              item
+              xs="auto"
+              // sx={{ display: "flex", alignItems: "center" }}
+            >
               <Link to="/">
                 <img
                   className="header-logo"
@@ -68,13 +72,7 @@ const Header = ({ window, siteTitle }) => {
             <Grid item xs></Grid>
             {links.map(({ to, text }, index) => (
               <Grid item key={index} xs="auto">
-                <Button
-                  component={Link}
-                  to={to}
-                  variant="text"
-                  color="primary"
-                  size="small"
-                >
+                <Button component={Link} to={to} variant="text" color="primary">
                   {text}
                 </Button>
               </Grid>

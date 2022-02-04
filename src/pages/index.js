@@ -21,13 +21,13 @@ const IndexPage = () => {
           backgroundPosition: "0 0, center",
           color: "white",
           padding: { xs: "5em 16px", sm: "5em 24px" },
-          margin: { xs: "0 -16px", sm: "0 -24px" },
+          margin: { xs: "0 -16px 1.5em", sm: "0 -24px 1.5em" },
         }}
       >
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h3" gutterBottom>
           Google Developer Student Club
         </Typography>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h4" gutterBottom>
           @Texas A&amp;M University
         </Typography>
       </Box>

@@ -19,19 +19,27 @@ const EventsIndexPage = ({ data: { allMarkdownRemark } }) => {
       <Grid
         container
         direction="row"
-        justifyContent="flex-start"
         alignItems="flex-start"
-        columnSpacing={3}
+        columnSpacing={4}
+        rowSpacing={4}
+        sx={{
+          justifyContent: {
+            xs: "center",
+            md: "flex-start",
+          },
+        }}
       >
         {edges.map(({ node: { frontmatter, fields } }, idx) => {
-          const { date, description, image, name } = frontmatter;
+          const { name, date, description, banner } = frontmatter;
           const { slug } = fields;
+
           return (
             <Grid item key={idx}>
               <EventCard
                 name={name}
                 timestamp={date}
                 description={description}
+                banner={banner}
                 link={slug}
               />
             </Grid>
@@ -44,15 +52,13 @@ const EventsIndexPage = ({ data: { allMarkdownRemark } }) => {
 
 const eventsIndexPageQuery = graphql`
   query {
-    allMarkdownRemark(
-      filter: { frontmatter: { templateKey: { eq: "event-page" } } }
-    ) {
+    allMarkdownRemark(filter: { fields: { collection: { eq: "events" } } }) {
       edges {
         node {
           frontmatter {
+            banner
             date
             description
-            image
             name
           }
           fields {

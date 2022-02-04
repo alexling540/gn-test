@@ -9,6 +9,7 @@ public_folder: /assets
 collections:
   - name: people
     label: People
+    label_singular: Person
     folder: src/pages/people
     slug: "{{firstName}}_{{lastName}}"
     create: true
@@ -19,7 +20,7 @@ collections:
       - { name: gitHub, label: GitHub, widget: string, required: false }
       - { name: linkedIn, label: LinkedIn, widget: string, required: false }
       - {
-          name: website,
+          name: personalWebsite,
           label: Personal website,
           widget: string,
           required: false,
@@ -66,16 +67,10 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}_{{name}}"
     fields:
-      - {
-          name: "templateKey",
-          label: "Template Key",
-          widget: "hidden",
-          default: "event-page",
-        }
       - { name: name, label: Event name, widget: string }
       - { name: date, label: Date, widget: datetime }
       - {
-          name: image,
+          name: banner,
           label: Banner image,
           widget: image,
           allow_multiple: false,
@@ -87,5 +82,12 @@ collections:
     label_singular: Project
     folder: src/pages/projects
     create: true
+    slug: "{{projectName}}"
     fields:
       - { name: name, label: Project name, widget: string }
+      - {
+          name: banner,
+          label: Project banner,
+          widget: image,
+          allow_multiple: false,
+        }

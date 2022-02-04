@@ -5,12 +5,13 @@ import { Link } from "gatsby-theme-material-ui";
 
 import Layout from "../components/layout/layout";
 
-const ProjectPageTemplate = ({ name }) => {
-  return <div></div>;
+const ProjectPageTemplate = ({ name, banner }) => {
+  return <div>{name}</div>;
 };
 
 const ProjectPage = ({ data: { markdownRemark } }) => {
   const { frontmatter, html } = markdownRemark;
+  const { name, banner } = frontmatter;
 
   return (
     <Layout>
@@ -20,7 +21,7 @@ const ProjectPage = ({ data: { markdownRemark } }) => {
         </Link>
         <Typography color="text.primary">{"A"}</Typography>
       </Breadcrumbs>
-      <ProjectPageTemplate name="A" />
+      <ProjectPageTemplate name={name} banner={banner} />
     </Layout>
   );
 };
@@ -30,12 +31,8 @@ const projectPageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        title
-        date
-        description
-        image
+        banner
         name
-        title
       }
     }
   }

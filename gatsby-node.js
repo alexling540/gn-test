@@ -8,73 +8,91 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
+const createPageFromMarkdown = (createPage, template) => {
+  const templatePath = "src/templates";
+
+  return function (edge) {
+    const {
+      node: {
+        id,
+        fields: { slug },
+      },
+    } = edge;
+
+    createPage({
+      path: slug,
+      component: path.resolve(`${templatePath}/${template}`),
+      context: {
+        id,
+      },
+    });
+  };
+};
+
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allEvents: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "events" } } }
+      ) {
         edges {
           node {
             id
             fields {
               slug
             }
-            frontmatter {
-              templateKey
+          }
+        }
+      }
+
+      allProjects: allMarkdownRemark(
+        filter: { fields: { collection: { eq: "projects" } } }
+      ) {
+        edges {
+          node {
+            id
+            fields {
+              slug
             }
           }
         }
       }
     }
-  `).then((result) => {
-    if (result.errors) {
-      result.errors.forEach((e) => console.error(e.toString()));
-      return Promise.reject(result.errors);
+  `).then(({ data, errors }) => {
+    if (errors) {
+      errors.forEach((e) => console.error(e.toString()));
+      return Promise.reject(errors);
     }
 
-    const md = result.data.allMarkdownRemark.edges;
+    const { allEvents, allProjects } = data;
 
-    md.forEach((edge) => {
-      const {
-        id,
-        fields: { slug },
-        frontmatter: { templateKey },
-      } = edge.node;
+    allEvents.edges.forEach((edge) =>
+      createPageFromMarkdown(createPage, "event-page.js")(edge)
+    );
 
-      if (typeof templateKey !== "undefined" && templateKey !== null) {
-        createPage({
-          path: slug,
-          component: path.resolve(`src/templates/${String(templateKey)}.js`),
-          // additional data can be passed via context
-          context: {
-            id,
-          },
-        });
-      }
-    });
+    allProjects.edges.forEach((edge) =>
+      createPageFromMarkdown(createPage, "project-page.js")(edge)
+    );
   });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
+  if (node.internal.type === "MarkdownRemark") {
+    const collection = getNode(node.parent).sourceInstanceName;
+    const slug = createFilePath({ node, getNode, basePath: "pages" });
     createNodeField({
-      name: `slug`,
       node,
-      value,
+      name: "collection",
+      value: collection,
+    });
+    createNodeField({
+      node,
+      name: "slug",
+      value: `/${collection}${slug}`,
     });
   }
 };
-
-// exports.createSchemaCustomization = ({ actions }) => {
-//   const { createTypes } = actions;
-//   const typeDefs = `
-//     type markdownRemark implements Node @dontInfer {
-//       frontmatter
-//     }
-//   `;
-//   createTypes(typeDefs);
-// };

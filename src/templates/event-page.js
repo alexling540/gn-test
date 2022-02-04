@@ -6,13 +6,13 @@ import { Link } from "gatsby-theme-material-ui";
 
 import Layout from "../components/layout/layout";
 
-const EventPageTemplate = ({ name, date, description, image }) => {
+const EventPageTemplate = ({ name, date, description, banner }) => {
   return (
     <React.Fragment>
       <Box
         style={{
-          background: image
-            ? `linear-gradient(90deg, rgb(255, 255, 255) 0%, transparent 25%, transparent 75%, rgb(255, 255, 255) 100%), url(${image})`
+          background: banner
+            ? `linear-gradient(90deg, rgb(255, 255, 255) 0%, transparent 25%, transparent 75%, rgb(255, 255, 255) 100%), url(${banner})`
             : "lightgrey",
         }}
         sx={{
@@ -33,7 +33,7 @@ const EventPageTemplate = ({ name, date, description, image }) => {
 
 const EventPage = ({ data: { markdownRemark } }) => {
   const { frontmatter, html } = markdownRemark;
-  const { name, date, description, image } = frontmatter;
+  const { name, date, description, banner } = frontmatter;
 
   return (
     <Layout>
@@ -45,22 +45,9 @@ const EventPage = ({ data: { markdownRemark } }) => {
       </Breadcrumbs>
       <EventPageTemplate
         name={name}
-        // content={post.html}
-        // contentComponent={HTMLContent}
         date={date}
         description={description}
-        image={image}
-        // helmet={
-        //   <Helmet titleTemplate="%s | Blog">
-        //     <title>{`${post.frontmatter.title}`}</title>
-        //     <meta
-        //       name="description"
-        //       content={`${post.frontmatter.description}`}
-        //     />
-        //   </Helmet>
-        // }
-        // tags={post.frontmatter.tags}
-        // title={post.frontmatter.title}
+        banner={banner}
       />
     </Layout>
   );
@@ -71,12 +58,10 @@ const eventPageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        title
+        banner
         date
         description
-        image
         name
-        title
       }
     }
   }

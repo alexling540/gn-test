@@ -27,17 +27,18 @@ const Layout = ({ children }) => {
   `);
 
   return (
-    <React.Fragment>
+    <div id="layout">
       <Header
         siteTitle={
           data.site.siteMetadata?.title || `Developer Student Club @ TAMU`
         }
+        id="header"
       />
       <Container id="main" maxWidth="xl" component="main">
         {children}
       </Container>
-      <Footer />
-    </React.Fragment>
+      <Footer id="footer" />
+    </div>
   );
 };
 
