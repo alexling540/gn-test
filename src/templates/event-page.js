@@ -25,7 +25,9 @@ const EventPageTemplate = ({ name, date, description, banner }) => {
         <Typography variant="h4" component="h1">
           {name}
         </Typography>
-        <div>{date}</div>
+        <Typography variant="h5" component="div">
+          {date}
+        </Typography>
       </Box>
 
       <Typography variant="body1" paragraph>

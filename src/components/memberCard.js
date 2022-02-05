@@ -13,6 +13,8 @@ import {
   Language as WebsiteIcon,
 } from "@mui/icons-material";
 
+import DefaultProfilePicture from "../images/default_profile_picture.jpg";
+
 const IconLink = ({ link, icon: Icon }) => {
   return (
     <a href={link}>
@@ -22,7 +24,7 @@ const IconLink = ({ link, icon: Icon }) => {
 };
 
 const MemberCard = ({
-  image,
+  picture,
   firstName,
   lastName,
   role,
@@ -34,9 +36,11 @@ const MemberCard = ({
 }) => {
   return (
     <Card sx={{ width: width ?? 275, maxWidth: "100%" }}>
-      {image && (
-        <CardMedia component="img" height={width ?? 275} image={image} />
-      )}
+      <CardMedia
+        component="img"
+        height={width ?? 275}
+        image={picture ? picture : DefaultProfilePicture}
+      />
       <CardContent>
         <Typography variant="h5" component="div">
           {firstName} {lastName}

@@ -5,6 +5,7 @@ const memberMarkdownFrontmatterFragment = graphql`
     frontmatter {
       firstName
       lastName
+      picture
       role
       intro
       gitHub

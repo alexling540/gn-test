@@ -9,8 +9,23 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import Moment from "react-moment";
+import "moment-timezone";
 
 const EventCard = ({ name, timestamp, description, banner, link, width }) => {
+  // const centralDate = new Date(
+  //   new Date(timestamp).toLocaleDateString("en-US", {
+  //     timeZone: "America/Chicago",
+  //   })
+  // );
+
+  // const momentThing = moment(timestamp);
+
+  // const formattedDate = new Intl.DateTimeFormat("en-US", {
+  //   dateStyle: "full",
+  //   timeStyle: "long",
+  // }).format(centralDate);
+
   return (
     <Card sx={{ width: width ?? 275, maxWidth: "100%" }}>
       {banner && <CardMedia component="img" height="120" image={banner} />}
@@ -19,15 +34,7 @@ const EventCard = ({ name, timestamp, description, banner, link, width }) => {
           {name}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {new Date(timestamp).toLocaleDateString("en-US", {
-            timeZone: "America/Chicago",
-            // weekday: "long",
-            // year: "numeric",
-            // month: "long",
-            // day: "numeric",
-            dateStyle: "long",
-            timeStyle: "short",
-          })}
+          <Moment date={timestamp} tz="America/Chicago" format="LLLL" />
         </Typography>
         <Typography variant="body2" paragraph>
           {description}

@@ -17,6 +17,13 @@ collections:
       - { name: firstName, label: First name, widget: string }
       - { name: lastName, label: Last name, widget: string }
       - {
+          name: picture,
+          label: Profile picture,
+          widget: image,
+          allow_multiple: false,
+          required: false,
+        }
+      - {
           name: role,
           label: Role,
           widget: select,
