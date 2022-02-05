@@ -2,7 +2,7 @@
 firstName: another
 lastName: person
 picture: /assets/pexels-pixabay-220453.jpg
-role: Member
+role: Officer
 intro: an introduction
 gitHub: https://github.com
 ---
