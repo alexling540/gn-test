@@ -3,16 +3,16 @@ import { graphql } from "gatsby";
 const personMarkdownFrontmatterFragment = graphql`
   fragment PersonMarkdownFrontmatterFragment on MarkdownRemark {
     frontmatter {
-      personName: name {
+      name: personName {
         first
         last
       }
-      personPicture: picture
-      personRole: role
-      personIntro: intro
-      personGitHub: gitHub
-      personLinkedIn: linkedIn
-      personPersonalWebsite: personalWebsite
+      picture: personPicture
+      role: personRole
+      intro: personIntro
+      gitHub: personGitHub
+      linkedIn: personLinkedIn
+      personalWebsite: personPersonalWebsite
     }
   }
 `;

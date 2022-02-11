@@ -22,9 +22,11 @@ const TeamPage = ({ data: { president, vicePresident, officers } }) => {
         columnSpacing={4}
         rowSpacing={4}
       >
-        <Grid item>
-          <PersonCard {...presidentFrontmatter} />
-        </Grid>
+        {presidentFrontmatter && (
+          <Grid item>
+            <PersonCard {...presidentFrontmatter} />
+          </Grid>
+        )}
         <Grid item>
           <PersonCard {...vicePresidentFrontmatter} />
         </Grid>
@@ -42,20 +44,20 @@ const teamPageQuery = graphql`
   query {
     president: markdownRemark(
       fields: { collection: { eq: "members" } }
-      frontmatter: { role: { eq: "President" } }
+      frontmatter: { personRole: { eq: "President" } }
     ) {
       ...PersonMarkdownFrontmatterFragment
     }
     vicePresident: markdownRemark(
       fields: { collection: { eq: "members" } }
-      frontmatter: { role: { eq: "Vice President" } }
+      frontmatter: { personRole: { eq: "Vice President" } }
     ) {
       ...PersonMarkdownFrontmatterFragment
     }
     officers: allMarkdownRemark(
       filter: {
         fields: { collection: { eq: "members" } }
-        frontmatter: { role: { eq: "Officer" } }
+        frontmatter: { personRole: { eq: "Officer" } }
       }
     ) {
       edges {
