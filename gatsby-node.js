@@ -9,34 +9,31 @@ const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
 const createPageFromMarkdown = (createPage, template) => {
-  const templatePath = "src/templates";
+  const templatePath = "./src/templates";
 
-  return function (edge) {
+  return function (node) {
     const {
-      node: {
-        id,
-        fields: { slug },
-      },
-    } = edge;
+      id,
+      fields: { slug },
+    } = node;
 
     createPage({
       path: slug,
       component: path.resolve(`${templatePath}/${template}`),
       context: {
         id,
+        slug,
       },
     });
   };
 };
 
-exports.createPages = async ({ actions, graphql }) => {
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
-  return graphql(`
+  const result = await graphql(`
     {
-      allEvents: allMarkdownRemark(
-        filter: { fields: { collection: { eq: "events" } } }
-      ) {
+      allEvents: allMdx(filter: { fields: { collection: { eq: "events" } } }) {
         edges {
           node {
             id
@@ -47,7 +44,7 @@ exports.createPages = async ({ actions, graphql }) => {
         }
       }
 
-      allProjects: allMarkdownRemark(
+      allProjects: allMdx(
         filter: { fields: { collection: { eq: "projects" } } }
       ) {
         edges {
@@ -60,30 +57,32 @@ exports.createPages = async ({ actions, graphql }) => {
         }
       }
     }
-  `).then(({ data, errors }) => {
-    if (errors) {
-      errors.forEach((e) => console.error(e.toString()));
-      return Promise.reject(errors);
-    }
+  `);
 
-    const { allEvents, allProjects } = data;
+  const { data, errors } = result;
 
-    allEvents.edges.forEach((edge) =>
-      createPageFromMarkdown(createPage, "event-page.js")(edge)
-    );
+  if (errors) {
+    errors.forEach((e) => console.error(e.toString()));
+    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
+  }
 
-    allProjects.edges.forEach((edge) =>
-      createPageFromMarkdown(createPage, "project-page.js")(edge)
-    );
-  });
+  const { allEvents, allProjects } = data;
+
+  allEvents.edges.forEach(({ node }) =>
+    createPageFromMarkdown(createPage, "event-page.js")(node)
+  );
+
+  allProjects.edges.forEach(({ node }) =>
+    createPageFromMarkdown(createPage, "project-page.js")(node)
+  );
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
+  const { createNode, createNodeField, createNodeId } = actions;
 
-  if (node.internal.type === "MarkdownRemark") {
+  if (node.internal.type === "Mdx") {
     const collection = getNode(node.parent).sourceInstanceName;
-    const slug = createFilePath({ node, getNode, basePath: "pages" });
+    const slug = createFilePath({ node, getNode });
 
     createNodeField({
       node,
@@ -92,14 +91,17 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
     createNodeField({
       node,
-      name: "isFuture",
-      value: new Date(node.frontmatter.date) > new Date(),
-    });
-    createNodeField({
-      node,
       name: "slug",
       value: `/${collection}${slug}`,
     });
+
+    if (collection === "events") {
+      createNodeField({
+        node,
+        name: "isFuture",
+        value: new Date(node.frontmatter.eventDate) > new Date(),
+      });
+    }
   }
 };
 

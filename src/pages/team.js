@@ -42,19 +42,19 @@ const TeamPage = ({ data: { president, vicePresident, officers } }) => {
 
 const teamPageQuery = graphql`
   query {
-    president: markdownRemark(
+    president: mdx(
       fields: { collection: { eq: "people" } }
       frontmatter: { personRole: { eq: "President" } }
     ) {
       ...PersonMarkdownFrontmatterFragment
     }
-    vicePresident: markdownRemark(
+    vicePresident: mdx(
       fields: { collection: { eq: "people" } }
       frontmatter: { personRole: { eq: "Vice President" } }
     ) {
       ...PersonMarkdownFrontmatterFragment
     }
-    officers: allMarkdownRemark(
+    officers: allMdx(
       filter: {
         fields: { collection: { eq: "people" } }
         frontmatter: { personRole: { eq: "Officer" } }

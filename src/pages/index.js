@@ -59,7 +59,7 @@ const IndexPage = ({ data: { upcomingEvents } }) => {
 
 const indexPageQuery = graphql`
   query {
-    upcomingEvents: allMarkdownRemark(
+    upcomingEvents: allMdx(
       filter: {
         fields: { collection: { eq: "events" }, isFuture: { eq: true } }
       }

@@ -25,27 +25,33 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/pages/events`,
+        path: `${__dirname}/src/content/events`,
         name: "events",
       },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/pages/people`,
+        path: `${__dirname}/src/content/people`,
         name: "people",
       },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/pages/projects`,
+        path: `${__dirname}/src/content/projects`,
         name: "projects",
       },
     },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    "gatsby-transformer-remark",
+    // "gatsby-transformer-remark",
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        extensions: [".md"],
+      },
+    },
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {

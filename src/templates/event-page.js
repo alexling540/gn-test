@@ -55,8 +55,8 @@ const EventPageTemplate = ({
   );
 };
 
-const EventPage = ({ data: { markdownRemark } }) => {
-  const { frontmatter, html } = markdownRemark;
+const EventPage = ({ data: { mdx } }) => {
+  const { frontmatter, html } = mdx;
   const { name } = frontmatter;
 
   return (
@@ -74,23 +74,17 @@ const EventPage = ({ data: { markdownRemark } }) => {
 
 const eventPageQuery = graphql`
   query EventPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      ...EventMarkdownFrontmatterFragment
-    }
-  }
-`;
-
-const eventMarkdownFrontmatterFragment = graphql`
-  fragment EventMarkdownFrontmatterFragment on MarkdownRemark {
-    frontmatter {
-      name: eventName
-      date: eventDate
-      banner: eventBanner
-      description: eventDescription
+    mdx(id: { eq: $id }) {
+      body
+      frontmatter {
+        name: eventName
+        date: eventDate
+        banner: eventBanner
+        description: eventDescription
+      }
     }
   }
 `;
 
 export default EventPage;
-export { EventPageTemplate, eventPageQuery, eventMarkdownFrontmatterFragment };
+export { EventPageTemplate, eventPageQuery };

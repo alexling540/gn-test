@@ -2,11 +2,11 @@ import React from "react";
 import { graphql } from "gatsby";
 import { Typography } from "@mui/material";
 
-import Layout from "../../components/layout/layout";
-import Divider from "../../components/divider";
-import EventsCardGrid from "../../components/EventsCardGrid";
+import Layout from "../components/layout/layout";
+import Divider from "../components/divider";
+import EventsCardGrid from "../components/EventsCardGrid";
 
-const EventsIndexPage = ({ data: { upcoming, past } }) => {
+const EventsPage = ({ data: { upcoming, past } }) => {
   return (
     <Layout>
       <Typography variant="h4" component="h1" sx={{ padding: "2em 0 1em" }}>
@@ -25,9 +25,9 @@ const EventsIndexPage = ({ data: { upcoming, past } }) => {
   );
 };
 
-const eventsIndexPageQuery = graphql`
-  query {
-    upcoming: allMarkdownRemark(
+const eventsPageQuery = graphql`
+  query EventsPageQuery {
+    upcoming: allMdx(
       filter: {
         fields: { collection: { eq: "events" }, isFuture: { eq: true } }
       }
@@ -42,7 +42,7 @@ const eventsIndexPageQuery = graphql`
         }
       }
     }
-    past: allMarkdownRemark(
+    past: allMdx(
       filter: {
         fields: { collection: { eq: "events" }, isFuture: { eq: false } }
       }
@@ -60,5 +60,5 @@ const eventsIndexPageQuery = graphql`
   }
 `;
 
-export default EventsIndexPage;
-export { eventsIndexPageQuery };
+export default EventsPage;
+export { eventsPageQuery };

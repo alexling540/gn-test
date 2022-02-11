@@ -2,9 +2,9 @@ import React from "react";
 import { graphql } from "gatsby";
 import { Grid, Typography } from "@mui/material";
 
-import Layout from "../../components/layout/layout";
-import Divider from "../../components/divider";
-import ProjectCard from "../../components/ProjectCard";
+import Layout from "../components/layout/layout";
+import Divider from "../components/divider";
+import ProjectCard from "../components/ProjectCard";
 
 const ProjectsCardGrid = ({ edges }) => {
   return (
@@ -57,9 +57,9 @@ const ProjectsIndexPage = ({ data: { current, previous } }) => {
   );
 };
 
-const projectsIndexPageQuery = graphql`
-  query {
-    current: allMarkdownRemark(
+const projectsPageQuery = graphql`
+  query ProjectsPageQuery {
+    current: allMdx(
       filter: {
         fields: { collection: { eq: "projects" } }
         frontmatter: { projectIsActive: { eq: true } }
@@ -74,7 +74,7 @@ const projectsIndexPageQuery = graphql`
         }
       }
     }
-    previous: allMarkdownRemark(
+    previous: allMdx(
       filter: {
         fields: { collection: { eq: "projects" } }
         frontmatter: { projectIsActive: { eq: false } }
@@ -93,4 +93,4 @@ const projectsIndexPageQuery = graphql`
 `;
 
 export default ProjectsIndexPage;
-export { projectsIndexPageQuery };
+export { projectsPageQuery };
