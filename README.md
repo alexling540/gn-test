@@ -1,54 +1,58 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# DSC @ TAMU Website
 
-## 🚀 Quick start
+Generates static pages for the club's website using Gatsby and Netlify CMS.
 
-1.  **Create a Gatsby site.**
+## Development
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+### Installating dependencies
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+Install dependencies using install script.
 
-2.  **Start developing.**
+```
+npm install
+```
 
-    Navigate into your new site’s directory and start it up.
+If it fails, use the following:
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+```shell
+npm install --legacy-peer-deps
+```
 
-3.  **Open the code and start customizing!**
+### Starting dev server
 
-    Your site is now running at http://localhost:8000!
+Start the development server with the develop script. Site will be on http://localhost:8000 and has hot reloading enabled.
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+```shell
+npm run develop
+```
 
-4.  **Learn more**
+### Folder structure
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+```
+src
+  ⌞cms
+  ⌞components
+  ⌞images
+  ⌞pages
+  ⌞templates
+static
+  ⌞admin
+```
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- src
+  - cms: Netlify CMS files, register previews for use in the admin panel
+  - components: Reusuable components
+  - pages: Pages to be generated, the path of a file is the exact path of the page
+  - templates: Templates used for making pages based on markdown files created by CMS and used as previews
+- static
+  - admin: yaml file used to configure collections in the Netlify CMS admin panel
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Deployment
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+### Building for production
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Build the site for production using the build script.
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+```shell
+npm run build
+```

@@ -103,26 +103,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-// exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
-//   const { createTypes } = actions;
-//   const { buildObjectType } = schema;
-
-//   const typeDefs = [
-//     buildObjectType({
-//       name: "MarkdownRemark",
-//       interfaces: ["Node"],
-//       fields: {
-//         isFuture: {
-//           type: "Boolean!",
-//           resolve: (s) => new Date(s.frontmatter.date) > new Date(),
-//         },
-//       },
-//     }),
-//   ];
-
-//   createTypes(typeDefs);
-// };
-
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {

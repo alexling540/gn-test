@@ -7,6 +7,49 @@ media_folder: static/assets
 public_folder: /assets
 
 collections:
+  - name: events
+    label: Events
+    label_singular: Event
+    description: Events for the club
+    folder: src/pages/events
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}_{{eventName}}"
+    summary: "{{eventName}} ({{eventDate}})"
+    sortable_fields: ["eventDate"]
+    fields:
+      - name: eventName
+        label: Event name
+        widget: string
+      - name: eventDate
+        label: Date
+        widget: datetime
+      - name: eventBanner
+        label: Banner image
+        widget: image
+        allow_multiple: false
+      - name: eventLocation
+        label: Location
+        widget: string
+      - name: eventDescription
+        label: Description
+        widget: text
+      - name: eventSpeakers
+        label: Speakers
+        widget: list
+        field:
+          {
+            name: speaker,
+            widget: relation,
+            collection: people,
+            search_fields: ["personName.first", "personName.last"],
+            value_field: "{{slug}}",
+            display_fields:
+              ["{{personName.first}} {{personName.last}} ({{personRole}})"],
+          }
+      - name: body
+        label: Content
+        widget: markdown
+
   - name: people
     label: People
     label_singular: Person
@@ -55,47 +98,7 @@ collections:
         widget: string
         required: false
 
-  - name: events
-    label: Events
-    label_singular: Event
-    description: Events for the club
-    folder: src/pages/events
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}_{{eventName}}"
-    summary: "{{eventName}} ({{eventDate}})"
-    sortable_fields: ["eventDate"]
-    fields:
-      - name: eventName
-        label: Event name
-        widget: string
-      - name: eventDate
-        label: Date
-        widget: datetime
-      - name: eventBanner
-        label: Banner image
-        widget: image
-        allow_multiple: false
-      - name: eventLocation
-        label: Location
-        widget: string
-      - name: eventDescription
-        label: Description
-        widget: text
-      - name: eventSpeakers
-        label: Speakers
-        widget: list
-        field:
-          {
-            name: speaker,
-            widget: relation,
-            collection: people,
-            search_fields: ["personName.first", "personName.last"],
-            value_field: "{{slug}}",
-            display_fields:
-              ["{{personName.first}} {{personName.last}} ({{personRole}})"],
-          }
-
-  - name: Projects
+  - name: projects
     label: Projects
     label_singular: Project
     folder: src/pages/projects

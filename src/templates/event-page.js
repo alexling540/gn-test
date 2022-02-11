@@ -8,7 +8,15 @@ import "moment-timezone";
 
 import Layout from "../components/layout/layout";
 
-const EventPageTemplate = ({ name, date, description, banner }) => {
+const EventPageTemplate = ({
+  name,
+  date,
+  banner,
+  location,
+  description,
+  speakers,
+  html,
+}) => {
   return (
     <React.Fragment>
       <Box
@@ -31,18 +39,25 @@ const EventPageTemplate = ({ name, date, description, banner }) => {
         <Typography variant="h5" component="div">
           <Moment date={date} tz="America/Chicago" format="LLLL" />
         </Typography>
+
+        <Typography variant="h5" component="div">
+          {location}
+        </Typography>
       </Box>
 
       <Typography variant="body1" paragraph>
         {description}
       </Typography>
+      {speakers}
+
+      <div dangerouslySetInnerHTML={{ __html: html }}></div>
     </React.Fragment>
   );
 };
 
 const EventPage = ({ data: { markdownRemark } }) => {
   const { frontmatter, html } = markdownRemark;
-  const { name, date, description, banner } = frontmatter;
+  const { name } = frontmatter;
 
   return (
     <Layout>
@@ -52,12 +67,7 @@ const EventPage = ({ data: { markdownRemark } }) => {
         </Link>
         <Typography color="text.primary">{name}</Typography>
       </Breadcrumbs>
-      <EventPageTemplate
-        name={name}
-        date={date}
-        description={description}
-        banner={banner}
-      />
+      <EventPageTemplate {...frontmatter} html={html} />
     </Layout>
   );
 };

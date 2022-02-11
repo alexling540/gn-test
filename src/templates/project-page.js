@@ -19,11 +19,7 @@ const ProjectPageTemplate = ({ name, banner, html }) => {
               {props.children}
             </Typography>
           ),
-          h2: (props) => (
-            <Typography variant="h5" component="h2">
-              {props.children}
-            </Typography>
-          ),
+          h2: (props) => <Typography variant="h5" component="h2" {...props} />,
           h3: (props) => (
             <Typography variant="h6" component="h3">
               {props.children}
