@@ -2,6 +2,6 @@
 personName:
   first: first
   last: last
-role: Guest
-intro: introoooo
+personRole: Guest
+personIntro: introoooo
 ---

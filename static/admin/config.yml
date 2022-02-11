@@ -30,23 +30,23 @@ collections:
         widget: image
         allow_multiple: false
         required: false
-      - name: role
+      - name: personRole
         label: Role
         widget: select
         options: ["President", "Vice President", "Officer", "Member", "Guest"]
         default: "Member"
-      - name: intro
+      - name: personIntro
         label: Introduction
         widget: text
-      - name: gitHub
+      - name: personGitHub
         label: GitHub
         widget: string
         required: false
-      - name: linkedIn
+      - name: personLinkedIn
         label: LinkedIn
         widget: string
         required: false
-      - name: personalWebsite,
+      - name: personPersonalWebsite,
         label: Personal website
         widget: string
         required: false

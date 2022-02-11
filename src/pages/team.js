@@ -44,13 +44,13 @@ const teamPageQuery = graphql`
       fields: { collection: { eq: "members" } }
       frontmatter: { role: { eq: "President" } }
     ) {
-      ...PeopleMarkdownFrontmatterFragment
+      ...PersonMarkdownFrontmatterFragment
     }
     vicePresident: markdownRemark(
       fields: { collection: { eq: "members" } }
       frontmatter: { role: { eq: "Vice President" } }
     ) {
-      ...PeopleMarkdownFrontmatterFragment
+      ...PersonMarkdownFrontmatterFragment
     }
     officers: allMarkdownRemark(
       filter: {
@@ -60,7 +60,7 @@ const teamPageQuery = graphql`
     ) {
       edges {
         node {
-          ...PeopleMarkdownFrontmatterFragment
+          ...PersonMarkdownFrontmatterFragment
         }
       }
     }
