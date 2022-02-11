@@ -67,6 +67,7 @@ const EventPageTemplate = ({
           <MDXRenderer>{body}</MDXRenderer>
         </MDXProvider>
       )}
+      {html}
       {html && <div dangerouslySetInnerHTML={{ __html: html }}></div>}
     </React.Fragment>
   );

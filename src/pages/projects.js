@@ -57,7 +57,7 @@ const ProjectsIndexPage = ({ data: { current, previous } }) => {
   );
 };
 
-const projectsPageQuery = graphql`
+const pageQuery = graphql`
   query ProjectsPageQuery {
     current: allMdx(
       filter: {
@@ -93,4 +93,4 @@ const projectsPageQuery = graphql`
 `;
 
 export default ProjectsIndexPage;
-export { projectsPageQuery };
+export { pageQuery };

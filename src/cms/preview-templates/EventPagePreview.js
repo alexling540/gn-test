@@ -1,6 +1,6 @@
 import React from "react";
 
-import { EventPageTemplate } from "../../components/templates/EventPageTemplate";
+import EventPageTemplate from "../../components/templates/EventPageTemplate";
 
 const EventPagePreview = ({ entry, widgetFor, widgetsFor }) => {
   return (

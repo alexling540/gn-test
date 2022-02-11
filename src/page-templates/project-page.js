@@ -27,11 +27,7 @@ const pageQuery = graphql`
   query ProjectPageBySlug($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       body
-      frontmatter {
-        name: projectName
-        banner: projectBanner
-        description: projectDescription
-      }
+      ...ProjectMarkdownFrontmatterFragment
     }
   }
 `;

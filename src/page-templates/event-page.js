@@ -27,12 +27,7 @@ const pageQuery = graphql`
   query EventPageBySlug($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       body
-      frontmatter {
-        name: eventName
-        date: eventDate
-        banner: eventBanner
-        description: eventDescription
-      }
+      ...EventMarkdownFrontmatterFragment
     }
   }
 `;

@@ -25,7 +25,7 @@ const EventsPage = ({ data: { upcoming, past } }) => {
   );
 };
 
-const eventsPageQuery = graphql`
+const pageQuery = graphql`
   query EventsPageQuery {
     upcoming: allMdx(
       filter: {
@@ -61,4 +61,4 @@ const eventsPageQuery = graphql`
 `;
 
 export default EventsPage;
-export { eventsPageQuery };
+export { pageQuery };

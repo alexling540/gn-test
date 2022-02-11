@@ -57,8 +57,8 @@ const IndexPage = ({ data: { upcomingEvents } }) => {
   );
 };
 
-const indexPageQuery = graphql`
-  query {
+const pageQuery = graphql`
+  query IndexPageQuery {
     upcomingEvents: allMdx(
       filter: {
         fields: { collection: { eq: "events" }, isFuture: { eq: true } }
@@ -79,4 +79,4 @@ const indexPageQuery = graphql`
 `;
 
 export default IndexPage;
-export { indexPageQuery };
+export { pageQuery };

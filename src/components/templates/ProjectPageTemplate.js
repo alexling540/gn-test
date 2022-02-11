@@ -16,6 +16,7 @@ const ProjectPageTemplate = ({ name, banner, html, body }) => {
           <MDXRenderer>{body}</MDXRenderer>
         </MDXProvider>
       )}
+      {html}
       {html && <div dangerouslySetInnerHTML={{ __html: html }}></div>}
     </React.Fragment>
   );

@@ -40,8 +40,8 @@ const TeamPage = ({ data: { president, vicePresident, officers } }) => {
   );
 };
 
-const teamPageQuery = graphql`
-  query {
+const pageQuery = graphql`
+  query TeamPageQuery {
     president: mdx(
       fields: { collection: { eq: "people" } }
       frontmatter: { personRole: { eq: "President" } }
@@ -70,4 +70,4 @@ const teamPageQuery = graphql`
 `;
 
 export default TeamPage;
-export { teamPageQuery };
+export { pageQuery };

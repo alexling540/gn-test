@@ -7,6 +7,8 @@ const eventMarkdownFrontmatterFragment = graphql`
       date: eventDate
       banner: eventBanner
       description: eventDescription
+      location: eventLocation
+      speakers: eventSpeakers
     }
   }
 `;
