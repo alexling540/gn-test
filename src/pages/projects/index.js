@@ -62,7 +62,7 @@ const projectsIndexPageQuery = graphql`
     current: allMarkdownRemark(
       filter: {
         fields: { collection: { eq: "projects" } }
-        frontmatter: { isActive: { eq: true } }
+        frontmatter: { projectIsActive: { eq: true } }
       }
     ) {
       edges {
@@ -77,7 +77,7 @@ const projectsIndexPageQuery = graphql`
     previous: allMarkdownRemark(
       filter: {
         fields: { collection: { eq: "projects" } }
-        frontmatter: { isActive: { eq: false } }
+        frontmatter: { projectIsActive: { eq: false } }
       }
     ) {
       edges {

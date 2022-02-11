@@ -11,8 +11,12 @@ collections:
     label: People
     label_singular: Person
     folder: src/pages/people
-    slug: "{{personName.first}}_{{personName.last}}"
+    slug: "{{year}}-{{month}}-{{day}}_{{personName.first}}_{{personName.last}}"
     summary: "{{personName.first}} {{personName.last}} ({{personRole}})"
+    sortable_fields: ["personName.last", "personRole"]
+    view_groups:
+      - label: Role
+        field: personRole
     create: true
     fields:
       - name: personName
@@ -58,31 +62,36 @@ collections:
     folder: src/pages/events
     create: true
     slug: "{{year}}-{{month}}-{{day}}_{{name}}"
+    sortable_fields: ["date"]
     fields:
-      - { name: name, label: Event name, widget: string }
-      - { name: date, label: Date, widget: datetime }
-      - {
-          name: banner,
-          label: Banner image,
-          widget: image,
-          allow_multiple: false,
-        }
-      - { name: location, label: Location, widget: string }
-      - { name: description, label: Description, widget: text }
-      - {
-          name: speakers,
-          label: Speakers,
-          widget: list,
-          field:
-            {
-              name: speaker,
-              widget: relation,
-              collection: people,
-              search_fields: ["personName.first", "personName.last"],
-              value_field: "{{slug}}",
-              display_fields: ["personName.first", "personName.last"],
-            },
-        }
+      - name: name
+        label: Event name
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: banner,
+        label: Banner image,
+        widget: image,
+        allow_multiple: false,
+      - name: location
+        label: Location
+        widget: string
+      - name: description
+        label: Description
+        widget: text
+      - name: speakers
+        label: Speakers
+        widget: list
+        field:
+          {
+            name: speaker,
+            widget: relation,
+            collection: people,
+            search_fields: ["personName.first", "personName.last"],
+            value_field: "{{slug}}",
+            display_fields: ["personName.first", "personName.last"],
+          }
 
   - name: Projects
     label: Projects
@@ -90,13 +99,33 @@ collections:
     folder: src/pages/projects
     create: true
     slug: "{{projectName}}"
+    sortable_fields: ["name"]
+    view_groups:
+      - label: Active
+        field: projectIsActive
     fields:
-      - { name: name, label: Project name, widget: string }
-      - { name: isActive, label: Active project?, widget: boolean }
-      - {
-          name: banner,
-          label: Project banner,
-          widget: image,
-          allow_multiple: false,
-        }
-      - { name: body, label: Content, widget: markdown }
+      - name: projectName
+        label: Project name
+        widget: string
+      - name: projectIsActive
+        label: Active project?
+        widget: boolean
+      - name: projectBanner
+        label: Project banner
+        widget: image
+        allow_multiple: false
+      - name: projectTeam
+        label: Team members
+        widget: list
+        field:
+          {
+            name: member,
+            widget: relation,
+            collection: people,
+            search_fields: ["personName.first", "personName.last"],
+            value_field: "{{slug}}",
+            display_fields: ["personName.first", "personName.last"],
+          }
+      - name: body
+        label: Content
+        widget: markdown

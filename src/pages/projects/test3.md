@@ -1,6 +1,6 @@
 ---
-name: test 2
-isActive: true
-banner: /assets/pepperoni-pizza.png
-description: description
+projectName: test 2
+projectIsActive: true
+projectBanner: /assets/pepperoni-pizza.png
+projectDescription: description
 ---

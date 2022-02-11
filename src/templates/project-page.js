@@ -31,8 +31,9 @@ const projectPageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        banner
-        name
+        name: projectName
+        banner: projectBanner
+        description: projectDescription
       }
     }
   }
@@ -41,9 +42,9 @@ const projectPageQuery = graphql`
 const projectMarkdownFrontmatterFragment = graphql`
   fragment ProjectMarkdownFrontmatterFragment on MarkdownRemark {
     frontmatter {
-      name
-      banner
-      description
+      name: projectName
+      banner: projectBanner
+      description: projectDescription
     }
   }
 `;
