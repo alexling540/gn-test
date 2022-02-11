@@ -2,11 +2,39 @@ import React from "react";
 import { graphql } from "gatsby";
 import { Breadcrumbs, Typography } from "@mui/material";
 import { Link } from "gatsby-theme-material-ui";
+import { MDXProvider } from "@mdx-js/react";
 
 import Layout from "../components/layout/layout";
 
-const ProjectPageTemplate = ({ name, banner }) => {
-  return <div>{name}</div>;
+const ProjectPageTemplate = ({ name, banner, html }) => {
+  return (
+    <React.Fragment>
+      <Typography variant="h4" component="h1">
+        {name}
+      </Typography>
+      <MDXProvider
+        components={{
+          h1: (props) => (
+            <Typography variant="h4" component="h1">
+              {props.children}
+            </Typography>
+          ),
+          h2: (props) => (
+            <Typography variant="h5" component="h2">
+              {props.children}
+            </Typography>
+          ),
+          h3: (props) => (
+            <Typography variant="h6" component="h3">
+              {props.children}
+            </Typography>
+          ),
+        }}
+      >
+        {html}
+      </MDXProvider>
+    </React.Fragment>
+  );
 };
 
 const ProjectPage = ({ data: { markdownRemark } }) => {
@@ -19,9 +47,9 @@ const ProjectPage = ({ data: { markdownRemark } }) => {
         <Link to="/projects" underline="hover" color="inherit">
           Projects
         </Link>
-        <Typography color="text.primary">{"A"}</Typography>
+        <Typography color="text.primary">{name}</Typography>
       </Breadcrumbs>
-      <ProjectPageTemplate name={name} banner={banner} />
+      <ProjectPageTemplate name={name} banner={banner} html={html} />
     </Layout>
   );
 };
