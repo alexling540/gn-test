@@ -6,8 +6,6 @@ import Layout from "../components/layout/layout";
 import PersonCard from "../components/PersonCard";
 
 const TeamPage = ({ data: { president, vicePresident, officers } }) => {
-  const { frontmatter: presidentFrontmatter } = president;
-  const { frontmatter: vicePresidentFrontmatter } = vicePresident;
   const { edges } = officers;
   return (
     <Layout>
@@ -22,14 +20,16 @@ const TeamPage = ({ data: { president, vicePresident, officers } }) => {
         columnSpacing={4}
         rowSpacing={4}
       >
-        {presidentFrontmatter && (
+        {president && (
           <Grid item>
-            <PersonCard {...presidentFrontmatter} />
+            <PersonCard {...president.frontmatter} />
           </Grid>
         )}
-        <Grid item>
-          <PersonCard {...vicePresidentFrontmatter} />
-        </Grid>
+        {vicePresident && (
+          <Grid item>
+            <PersonCard {...vicePresident.frontmatter} />
+          </Grid>
+        )}
         {edges.map(({ node }, idx) => (
           <Grid item key={idx}>
             <PersonCard {...node.frontmatter} />
@@ -43,20 +43,20 @@ const TeamPage = ({ data: { president, vicePresident, officers } }) => {
 const teamPageQuery = graphql`
   query {
     president: markdownRemark(
-      fields: { collection: { eq: "members" } }
+      fields: { collection: { eq: "people" } }
       frontmatter: { personRole: { eq: "President" } }
     ) {
       ...PersonMarkdownFrontmatterFragment
     }
     vicePresident: markdownRemark(
-      fields: { collection: { eq: "members" } }
+      fields: { collection: { eq: "people" } }
       frontmatter: { personRole: { eq: "Vice President" } }
     ) {
       ...PersonMarkdownFrontmatterFragment
     }
     officers: allMarkdownRemark(
       filter: {
-        fields: { collection: { eq: "members" } }
+        fields: { collection: { eq: "people" } }
         frontmatter: { personRole: { eq: "Officer" } }
       }
     ) {
