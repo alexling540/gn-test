@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Grid, List, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 import Layout from "../components/layout/layout";
 import PersonCard from "../components/PersonCard";

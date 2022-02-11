@@ -90,7 +90,8 @@ collections:
             collection: people,
             search_fields: ["personName.first", "personName.last"],
             value_field: "{{slug}}",
-            display_fields: ["personName.first", "personName.last"],
+            display_fields:
+              ["{{personName.first}} {{personName.last}} ({{personRole}})"],
           }
 
   - name: Projects

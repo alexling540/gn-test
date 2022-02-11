@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Box, Breadcrumbs, Typography } from "@mui/material";
+import { Breadcrumbs, Typography } from "@mui/material";
 import { Link } from "gatsby-theme-material-ui";
 
 import Layout from "../components/layout/layout";
