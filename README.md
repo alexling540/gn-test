@@ -30,22 +30,30 @@ npm run develop
 
 ```
 src
-  ⌞cms
-  ⌞components
-  ⌞images
-  ⌞pages
+ ⌞cms
+  ⌞preview-templates
+ ⌞components
+  ⌞layout
   ⌞templates
+ ⌞images
+ ⌞page-templates
+ ⌞pages
 static
-  ⌞admin
+ ⌞admin
+ ⌞assets
 ```
 
 - src
   - cms: Netlify CMS files, register previews for use in the admin panel
+    - preview-templates: Templates to render the previews within the admin panel
   - components: Reusuable components
+    - layout: Main layout templates
+    - templates: Content templates to render content, used in components found in cms/preview-templates and page-templates folders
+  - page-templates: Templates used for making pages based on markdown files created by CMS
   - pages: Pages to be generated, the path of a file is the exact path of the page
-  - templates: Templates used for making pages based on markdown files created by CMS and used as previews
 - static
   - admin: yaml file used to configure collections in the Netlify CMS admin panel
+  - assets: Static files created by the CMS
 
 ## Deployment
 
