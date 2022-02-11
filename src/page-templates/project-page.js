@@ -4,7 +4,7 @@ import { Breadcrumbs, Typography } from "@mui/material";
 import { Link } from "gatsby-theme-material-ui";
 
 import Layout from "../components/layout/layout";
-import ProjectPageTemplate from "../components/templates/project-template";
+import ProjectPageTemplate from "../components/templates/ProjectPageTemplate";
 
 const ProjectPage = ({ data: { mdx } }) => {
   const { frontmatter, body } = mdx;
@@ -18,23 +18,10 @@ const ProjectPage = ({ data: { mdx } }) => {
         </Link>
         <Typography color="text.primary">{name}</Typography>
       </Breadcrumbs>
-      <ProjectPageTemplate name={name} banner={banner} html={body} />
+      <ProjectPageTemplate name={name} banner={banner} body={body} />
     </Layout>
   );
 };
-
-// const projectPageQuery = graphql`
-//   query ProjectPage($id: String!) {
-//     mdx(id: { eq: $id }) {
-//       html
-//       frontmatter {
-//         name: projectName
-//         banner: projectBanner
-//         description: projectDescription
-//       }
-//     }
-//   }
-// `;
 
 const pageQuery = graphql`
   query ProjectPageBySlug($slug: String!) {

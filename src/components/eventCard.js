@@ -39,7 +39,7 @@ const EventCard = ({ name, timestamp, description, banner, link, width }) => {
 
 EventCard.propTypes = {
   name: PropTypes.string.isRequired,
-  timestamp: PropTypes.number.isRequired,
+  timestamp: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
 };

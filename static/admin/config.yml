@@ -11,7 +11,7 @@ collections:
     label: Events
     label_singular: Event
     description: Events for the club
-    folder: src/pages/events
+    folder: src/content/events
     create: true
     slug: "{{year}}-{{month}}-{{day}}_{{eventName}}"
     summary: "{{eventName}} ({{eventDate}})"
@@ -53,7 +53,7 @@ collections:
   - name: people
     label: People
     label_singular: Person
-    folder: src/pages/people
+    folder: src/content/people
     slug: "{{year}}-{{month}}-{{day}}_{{personName.first}}_{{personName.last}}"
     summary: "{{personName.first}} {{personName.last}} ({{personRole}})"
     sortable_fields: ["personName.last", "personRole"]
@@ -101,7 +101,7 @@ collections:
   - name: projects
     label: Projects
     label_singular: Project
-    folder: src/pages/projects
+    folder: src/content/projects
     create: true
     slug: "{{projectName}}"
     sortable_fields: ["eventName"]

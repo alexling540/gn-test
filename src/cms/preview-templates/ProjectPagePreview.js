@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProjectPageTemplate from "../../components/templates/project-template";
+import ProjectPageTemplate from "../../components/templates/ProjectPageTemplate";
 
 const ProjectPagePreview = ({ entry, widgetFor, widgetsFor }) => {
   return (
@@ -8,7 +8,7 @@ const ProjectPagePreview = ({ entry, widgetFor, widgetsFor }) => {
       // name={entry.getIn(["data", "projectName"])}
       // banner={entry.getIn(["data", "projectBanner"])}
       // team={widgetsFor("projectTeam")}
-      html={widgetFor("body")}
+      body={widgetFor("body")}
     />
   );
 };

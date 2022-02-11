@@ -9,7 +9,7 @@ const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
 const createPageFromMarkdown = (createPage, template) => {
-  const templatePath = "./src/templates";
+  const templatePath = "./src/page-templates";
 
   return function (node) {
     const {

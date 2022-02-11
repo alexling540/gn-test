@@ -1,12 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import { Box, Breadcrumbs, Typography } from "@mui/material";
-import { Link } from "gatsby-theme-material-ui";
+import { Box, Typography } from "@mui/material";
+import { MDXProvider } from "@mdx-js/react";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import Moment from "react-moment";
 import "moment-timezone";
 
-import Layout from "../components/layout/layout";
+import shortcodes from "./shortcodes";
+
+const SpeakersSection = ({ speakers }) => {
+  return (
+    <Box>
+      <Typography variant="h5" component="h2">
+        Speakers
+      </Typography>
+      {speakers}
+    </Box>
+  );
+};
 
 const EventPageTemplate = ({
   name,
@@ -15,6 +26,7 @@ const EventPageTemplate = ({
   location,
   description,
   speakers,
+  body,
   html,
 }) => {
   return (
@@ -48,43 +60,16 @@ const EventPageTemplate = ({
       <Typography variant="body1" paragraph>
         {description}
       </Typography>
-      {speakers}
+      {speakers && <SpeakersSection speakers={speakers} />}
 
-      <div dangerouslySetInnerHTML={{ __html: html }}></div>
+      {body && (
+        <MDXProvider components={shortcodes}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </MDXProvider>
+      )}
+      {html && <div dangerouslySetInnerHTML={{ __html: html }}></div>}
     </React.Fragment>
   );
 };
 
-const EventPage = ({ data: { mdx } }) => {
-  const { frontmatter, html } = mdx;
-  const { name } = frontmatter;
-
-  return (
-    <Layout>
-      <Breadcrumbs sx={{ padding: "2em 0 1em" }}>
-        <Link to="/events" underline="hover" color="inherit">
-          Events
-        </Link>
-        <Typography color="text.primary">{name}</Typography>
-      </Breadcrumbs>
-      <EventPageTemplate {...frontmatter} html={html} />
-    </Layout>
-  );
-};
-
-const eventPageQuery = graphql`
-  query EventPage($id: String!) {
-    mdx(id: { eq: $id }) {
-      body
-      frontmatter {
-        name: eventName
-        date: eventDate
-        banner: eventBanner
-        description: eventDescription
-      }
-    }
-  }
-`;
-
-export default EventPage;
-export { EventPageTemplate, eventPageQuery };
+export default EventPageTemplate;
