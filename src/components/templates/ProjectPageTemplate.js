@@ -5,17 +5,20 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import shortcodes from "./shortcodes";
 
-const ProjectTemplate = ({ name, banner, html, body }) => {
+const ProjectPageTemplate = ({ name, banner, html, body }) => {
   return (
     <React.Fragment>
       <Typography variant="h4" component="h1">
         {name}
       </Typography>
-      <MDXProvider components={shortcodes}>
-        <MDXRenderer>{body}</MDXRenderer>
-      </MDXProvider>
+      {body && (
+        <MDXProvider components={shortcodes}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </MDXProvider>
+      )}
+      {html && <div dangerouslySetInnerHTML={{ __html: html }}></div>}
     </React.Fragment>
   );
 };
 
-export default ProjectTemplate;
+export default ProjectPageTemplate;
