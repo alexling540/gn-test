@@ -23,10 +23,9 @@ const IconLink = ({ link, icon: Icon }) => {
   );
 };
 
-const MemberCard = ({
+const PersonCard = ({
   picture,
-  firstName,
-  lastName,
+  name,
   role,
   intro,
   gitHub,
@@ -43,7 +42,7 @@ const MemberCard = ({
       />
       <CardContent>
         <Typography variant="h5" component="div">
-          {firstName} {lastName}
+          {name.first} {name.last}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           {role}
@@ -63,4 +62,4 @@ const MemberCard = ({
   );
 };
 
-export default MemberCard;
+export default PersonCard;

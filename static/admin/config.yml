@@ -7,38 +7,49 @@ media_folder: static/assets
 public_folder: /assets
 
 collections:
-  - name: member
-    label: Member
-    label_singular: Member
-    folder: src/pages/members
-    slug: "{{firstName}}_{{lastName}}"
+  - name: people
+    label: People
+    label_singular: Person
+    folder: src/pages/people
+    slug: "{{name.first}}_{{name.last}}"
+    summary: "{{name.first}} {{name.last}}"
     create: true
     fields:
-      - { name: firstName, label: First name, widget: string }
-      - { name: lastName, label: Last name, widget: string }
-      - {
-          name: picture,
-          label: Profile picture,
-          widget: image,
-          allow_multiple: false,
-          required: false,
-        }
-      - {
-          name: role,
-          label: Role,
-          widget: select,
-          options: ["President", "Vice President", "Officer", "Member"],
-          default: "Member",
-        }
-      - { name: intro, label: Introduction, widget: text }
-      - { name: gitHub, label: GitHub, widget: string, required: false }
-      - { name: linkedIn, label: LinkedIn, widget: string, required: false }
-      - {
-          name: personalWebsite,
-          label: Personal website,
-          widget: string,
-          required: false,
-        }
+      - name: name
+        label: Name
+        widget: object
+        fields:
+          - name: first
+            label: First name
+            widget: string
+          - name: last
+            label: Last name
+            widget: string
+      - name: picture
+        label: Profile picture
+        widget: image
+        allow_multiple: false
+        required: false
+      - name: role
+        label: Role
+        widget: select
+        options: ["President", "Vice President", "Officer", "Member", "Guest"]
+        default: "Member"
+      - name: intro
+        label: Introduction
+        widget: text
+      - name: gitHub
+        label: GitHub
+        widget: string
+        required: false
+      - name: linkedIn
+        label: LinkedIn
+        widget: string
+        required: false
+      - name: personalWebsite,
+        label: Personal website
+        widget: string
+        required: false
 
   - name: events
     label: Events
@@ -56,7 +67,22 @@ collections:
           widget: image,
           allow_multiple: false,
         }
+      - { name: location, label: Location, widget: string }
       - { name: description, label: Description, widget: text }
+      - {
+          name: speakers,
+          label: Speakers,
+          widget: list,
+          field:
+            {
+              name: speaker,
+              widget: relation,
+              collection: people,
+              search_fields: ["name.first", "name.last"],
+              value_field: "{{slug}}",
+              display_fields: ["name.first", "name.last"],
+            },
+        }
 
   - name: Projects
     label: Projects
@@ -73,3 +99,4 @@ collections:
           widget: image,
           allow_multiple: false,
         }
+      - { name: body, label: Content, widget: markdown }

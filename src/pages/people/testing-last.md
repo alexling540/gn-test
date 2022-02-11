@@ -1,6 +1,7 @@
 ---
-firstName: other
-lastName: thing
+name:
+  first: other
+  last: thing
 role: Vice President
 intro: this is an intro
 ---
