@@ -47,7 +47,11 @@ const Footer = ({ id }) => {
           {footerIcons.map(({ icon: Icon, link }, idx) => (
             <Grid item key={idx}>
               <a href={link}>
-                <Icon htmlColor="white" fontSize="large" />
+                <Icon
+                  htmlColor="white"
+                  fontSize="large"
+                  style={{ verticalAlign: "middle" }}
+                />
               </a>
             </Grid>
           ))}

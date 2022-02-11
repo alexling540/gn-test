@@ -31,7 +31,7 @@ const eventsIndexPageQuery = graphql`
       filter: {
         fields: { collection: { eq: "events" }, isFuture: { eq: true } }
       }
-      sort: { fields: [frontmatter___date], order: ASC }
+      sort: { fields: [frontmatter___eventDate], order: ASC }
     ) {
       edges {
         node {
@@ -46,7 +46,7 @@ const eventsIndexPageQuery = graphql`
       filter: {
         fields: { collection: { eq: "events" }, isFuture: { eq: false } }
       }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [frontmatter___eventDate], order: DESC }
     ) {
       edges {
         node {

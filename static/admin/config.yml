@@ -64,23 +64,23 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}_{{name}}"
     sortable_fields: ["date"]
     fields:
-      - name: name
+      - name: eventName
         label: Event name
         widget: string
-      - name: date
+      - name: eventDate
         label: Date
         widget: datetime
-      - name: banner,
-        label: Banner image,
-        widget: image,
-        allow_multiple: false,
-      - name: location
+      - name: eventBanner
+        label: Banner image
+        widget: image
+        allow_multiple: false
+      - name: eventLocation
         label: Location
         widget: string
-      - name: description
+      - name: eventDescription
         label: Description
         widget: text
-      - name: speakers
+      - name: eventSpeakers
         label: Speakers
         widget: list
         field:

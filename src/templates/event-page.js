@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Box, Breadcrumbs, Typography } from "@mui/material";
 import { Link } from "gatsby-theme-material-ui";
+import Moment from "react-moment";
+import "moment-timezone";
 
 import Layout from "../components/layout/layout";
 
@@ -25,8 +27,9 @@ const EventPageTemplate = ({ name, date, description, banner }) => {
         <Typography variant="h4" component="h1">
           {name}
         </Typography>
+
         <Typography variant="h5" component="div">
-          {date}
+          <Moment date={date} tz="America/Chicago" format="LLLL" />
         </Typography>
       </Box>
 
@@ -71,10 +74,10 @@ const eventPageQuery = graphql`
 const eventMarkdownFrontmatterFragment = graphql`
   fragment EventMarkdownFrontmatterFragment on MarkdownRemark {
     frontmatter {
-      banner
-      date
-      description
-      name
+      name: eventName
+      date: eventDate
+      banner: eventBanner
+      description: eventDescription
     }
   }
 `;

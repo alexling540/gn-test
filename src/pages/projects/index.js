@@ -4,7 +4,7 @@ import { Grid, Typography } from "@mui/material";
 
 import Layout from "../../components/layout/layout";
 import Divider from "../../components/divider";
-import ProjectCard from "../../components/projectCard";
+import ProjectCard from "../../components/ProjectCard";
 
 const ProjectsCardGrid = ({ edges }) => {
   return (
