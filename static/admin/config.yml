@@ -61,8 +61,9 @@ collections:
     description: Events for the club
     folder: src/pages/events
     create: true
-    slug: "{{year}}-{{month}}-{{day}}_{{name}}"
-    sortable_fields: ["date"]
+    slug: "{{year}}-{{month}}-{{day}}_{{eventName}}"
+    summary: "{{eventName}} ({{eventDate}})"
+    sortable_fields: ["eventDate"]
     fields:
       - name: eventName
         label: Event name
@@ -100,7 +101,7 @@ collections:
     folder: src/pages/projects
     create: true
     slug: "{{projectName}}"
-    sortable_fields: ["name"]
+    sortable_fields: ["eventName"]
     view_groups:
       - label: Active
         field: projectIsActive
