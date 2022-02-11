@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 
 import Layout from "../../components/layout/layout";
 import Divider from "../../components/divider";
-import EventsCardGrid from "../../components/eventsCardGrid";
+import EventsCardGrid from "../../components/EventsCardGrid";
 
 const EventsIndexPage = ({ data: { upcoming, past } }) => {
   return (

@@ -1,8 +1,8 @@
 ---
-name:
+personName:
   first: not
   last: first
-picture: /assets/pexels-pixabay-415829.jpg
+personPicture: /assets/pexels-pixabay-415829.jpg
 role: Officer
 intro: lorem ipsum
 ---

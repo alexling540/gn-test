@@ -1,5 +1,5 @@
 ---
-name:
+personName:
   first: first
   last: last
 role: Guest

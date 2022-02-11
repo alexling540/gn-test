@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 
-import EventCard from "./eventCard";
+import EventCard from "./EventCard";
 
 const EventsCardGrid = ({ edges }) => {
   return edges.length === 0 ? (

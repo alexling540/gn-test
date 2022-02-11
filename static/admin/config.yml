@@ -11,11 +11,11 @@ collections:
     label: People
     label_singular: Person
     folder: src/pages/people
-    slug: "{{name.first}}_{{name.last}}"
-    summary: "{{name.first}} {{name.last}}"
+    slug: "{{personName.first}}_{{personName.last}}"
+    summary: "{{personName.first}} {{personName.last}}"
     create: true
     fields:
-      - name: name
+      - name: personName
         label: Name
         widget: object
         fields:
@@ -25,7 +25,7 @@ collections:
           - name: last
             label: Last name
             widget: string
-      - name: picture
+      - name: personPicture
         label: Profile picture
         widget: image
         allow_multiple: false
@@ -78,9 +78,9 @@ collections:
               name: speaker,
               widget: relation,
               collection: people,
-              search_fields: ["name.first", "name.last"],
+              search_fields: ["personName.first", "personName.last"],
               value_field: "{{slug}}",
-              display_fields: ["name.first", "name.last"],
+              display_fields: ["personName.first", "personName.last"],
             },
         }
 

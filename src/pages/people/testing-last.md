@@ -1,5 +1,5 @@
 ---
-name:
+personName:
   first: other
   last: thing
 role: Vice President

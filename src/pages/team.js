@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { Grid, List, Typography } from "@mui/material";
 
 import Layout from "../components/layout/layout";
-import MemberCard from "../components/memberCard";
+import PersonCard from "../components/PersonCard";
 
 const TeamPage = ({ data: { president, vicePresident, officers } }) => {
   const { frontmatter: presidentFrontmatter } = president;
@@ -23,14 +23,14 @@ const TeamPage = ({ data: { president, vicePresident, officers } }) => {
         rowSpacing={4}
       >
         <Grid item>
-          <MemberCard {...presidentFrontmatter} />
+          <PersonCard {...presidentFrontmatter} />
         </Grid>
         <Grid item>
-          <MemberCard {...vicePresidentFrontmatter} />
+          <PersonCard {...vicePresidentFrontmatter} />
         </Grid>
         {edges.map(({ node }, idx) => (
           <Grid item key={idx}>
-            <MemberCard {...node.frontmatter} />
+            <PersonCard {...node.frontmatter} />
           </Grid>
         ))}
       </Grid>
@@ -44,13 +44,13 @@ const teamPageQuery = graphql`
       fields: { collection: { eq: "members" } }
       frontmatter: { role: { eq: "President" } }
     ) {
-      ...MemberMarkdownFrontmatterFragment
+      ...PeopleMarkdownFrontmatterFragment
     }
     vicePresident: markdownRemark(
       fields: { collection: { eq: "members" } }
       frontmatter: { role: { eq: "Vice President" } }
     ) {
-      ...MemberMarkdownFrontmatterFragment
+      ...PeopleMarkdownFrontmatterFragment
     }
     officers: allMarkdownRemark(
       filter: {
@@ -60,7 +60,7 @@ const teamPageQuery = graphql`
     ) {
       edges {
         node {
-          ...MemberMarkdownFrontmatterFragment
+          ...PeopleMarkdownFrontmatterFragment
         }
       }
     }
