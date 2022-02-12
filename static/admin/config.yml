@@ -13,7 +13,7 @@ collections:
     description: Events for the club
     folder: src/content/events
     create: true
-    slug: "{{year}}-{{month}}-{{day}}_{{eventName}}"
+    slug: "{{year}}{{month}}{{day}}_{{eventName}}"
     summary: "{{eventName}} ({{eventDate}})"
     sortable_fields: ["eventDate"]
     fields:
@@ -27,6 +27,7 @@ collections:
         label: Banner image
         widget: image
         allow_multiple: false
+        required: false
       - name: eventLocation
         label: Location
         widget: string
@@ -42,7 +43,7 @@ collections:
             widget: relation,
             collection: people,
             search_fields: ["personName.first", "personName.last"],
-            value_fields: "{{slug}}",
+            value_field: "{{slug}}",
             display_fields:
               ["{{personName.first}} {{personName.last}} ({{personRole}})"],
           }
