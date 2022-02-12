@@ -2,7 +2,7 @@
 eventName: " Technical Interviews 101 "
 eventDate: 2021-10-14T23:30:31.314Z
 eventLocation: PETR 118 in L.F. Peterson Building - 435 Nagle Street College Station, 77840
-eventDescription: Technical Interviews 101
+eventDescription: Speaker Session / Tech Talk
 ---
 Howdy!
 
