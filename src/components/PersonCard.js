@@ -34,10 +34,10 @@ const PersonCard = ({
   width,
 }) => {
   return (
-    <Card sx={{ width: width ?? 275, maxWidth: "100%" }}>
+    <Card sx={{ width: width ?? 300, maxWidth: "100%" }}>
       <CardMedia
         component="img"
-        height={width ?? 275}
+        height={width ?? 300}
         image={picture ? picture : DefaultProfilePicture}
       />
       <CardContent>

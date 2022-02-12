@@ -14,7 +14,7 @@ import "moment-timezone";
 
 const EventCard = ({ name, timestamp, description, banner, link, width }) => {
   return (
-    <Card sx={{ width: width ?? 275, maxWidth: "100%" }}>
+    <Card sx={{ width: width ?? 300, maxWidth: "100%" }}>
       {banner && <CardMedia component="img" height="120" image={banner} />}
       <CardContent>
         <Typography variant="h5" component="div">
