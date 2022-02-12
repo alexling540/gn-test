@@ -41,7 +41,7 @@ const EventPageTemplate = ({
           backgroundSize: "auto, cover",
           backgroundPosition: "0 0, center",
           padding: { xs: "3em 16px", sm: "3em 24px" },
-          margin: { xs: "0 -16px", sm: "0 -24px" },
+          margin: { xs: "0 -16px 32px", sm: "0 -24px 32px" },
         }}
       >
         <Typography variant="h4" component="h1">
@@ -57,9 +57,6 @@ const EventPageTemplate = ({
         </Typography>
       </Box>
 
-      <Typography variant="body1" paragraph>
-        {description}
-      </Typography>
       {speakers && <SpeakersSection speakers={speakers} />}
 
       {body && (

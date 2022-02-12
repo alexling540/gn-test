@@ -31,7 +31,6 @@ const EventCard = ({ name, timestamp, description, banner, link, width }) => {
         <Button component={Link} to={link}>
           View
         </Button>
-        <Button>RSVP</Button>
       </CardActions>
     </Card>
   );

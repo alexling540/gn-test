@@ -21,7 +21,7 @@ const IndexPage = ({ data: { upcomingEvents } }) => {
           backgroundPosition: "0 0, center",
           color: "white",
           padding: { xs: "5em 16px", sm: "5em 24px" },
-          margin: { xs: "0 -16px 1.5em", sm: "0 -24px 1.5em" },
+          margin: { xs: "0 -16px 32px", sm: "0 -24px 32px" },
         }}
       >
         <Typography variant="h3" component="h1" gutterBottom>
