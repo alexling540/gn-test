@@ -68,7 +68,6 @@ const EventPageTemplate = ({
         </MDXProvider>
       )}
       {html}
-      {html && <div dangerouslySetInnerHTML={{ __html: html }}></div>}
     </React.Fragment>
   );
 };
