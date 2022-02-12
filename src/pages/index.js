@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby";
 import { Box, Button, Typography } from "@mui/material";
 
 import Layout from "../components/layout/layout";
-import Divider from "../components/divider";
+import Divider from "../components/Divider";
 import EventsCardGrid from "../components/EventsCardGrid";
 
 import background from "../images/home_background.jpeg";

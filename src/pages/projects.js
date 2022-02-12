@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { Grid, Typography } from "@mui/material";
 
 import Layout from "../components/layout/layout";
-import Divider from "../components/divider";
+import Divider from "../components/Divider";
 import ProjectCard from "../components/ProjectCard";
 
 const ProjectsCardGrid = ({ edges }) => {
