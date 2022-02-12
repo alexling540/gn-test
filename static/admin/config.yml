@@ -33,6 +33,19 @@ collections:
       - name: eventDescription
         label: Description
         widget: text
+      - name: eventOrganizers
+        label: Organizers
+        widget: list
+        field:
+          {
+            name: organizer,
+            widget: relation,
+            collection: people,
+            search_fields: ["personName.first", "personName.last"],
+            value_fields: "{{slug}}",
+            display_fields:
+              ["{{personName.first}} {{personName.last}} ({{personRole}})"],
+          }
       - name: eventSpeakers
         label: Speakers
         widget: list
