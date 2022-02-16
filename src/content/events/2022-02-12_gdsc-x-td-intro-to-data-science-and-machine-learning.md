@@ -10,7 +10,12 @@ Zoom Link: <https://tamu.zoom.us/j/95288585487?pwd=ZkNQZzJuY1hRZ3JPWmNIL0lEUlRz
 
 ## Agenda
 
-| Syntax    | Description |
-| --------- | ----------- |
-| Header    | Title       |
-| Paragraph | Text        |
+| Time    | Topic           | Details |
+| ------- | --------------- | ------- |
+| 6:30 PM | Title           | Get to know our speaker, Aditya Pethe!
+| 6:40 PM | Text            | What is data science and machine learning?
+| 6:50 PM | Tools           | What tools can you use for DS/ML?
+| 7:00 PM | Jobs            | What jobs can you use in the field of data science and machine learning?
+| 7:10 PM | Datathon        | What is TAMU Datathon?
+| 7:20 PM | Competing       | How can I compete at TAMU Datathon 2021?
+| 7:30 PM | Closing Remarks |
