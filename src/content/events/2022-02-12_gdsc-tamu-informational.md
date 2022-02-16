@@ -19,3 +19,14 @@ Add us on social media to stay updated about our future events:
 * Facebook: [tx.ag/dscfb](http://tx.ag/dscfb)
 * Instagram: [tx.ag/dscinsta](http://tx.ag/dscinsta)
 * Twitter: [tx.ag/dsctwitter](http://tx.ag/dsctwitter)
+
+## Agenda
+
+| Time    | Topic                 | Details |
+| ------- | --------------------- | ------- |
+| 6:30 PM | New Team Introduction | Meet the new team of officers that will be leading this year of GDSC TAMU
+| 6:40 PM | What is DSC           | Learn about the global Google Developer Student Clubs program
+| 6:50 PM | Guest Speaker         | Hear from Daniel Fiorillo, who is North America's CM for GDSCs
+| 7:00 PM | Membership            | How membership works with GDSC
+| 7:15 PM | Projects              | We'll discuss the projects we're currently working on at GDSC and how you can get involved too
+| 7:30 PM |Closing Remarks        | We'll have a few closing statements on how to stay involved with GDSC
