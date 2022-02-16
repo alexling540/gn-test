@@ -15,12 +15,15 @@ const EventsPage = ({ data: { upcoming, past } }) => {
       <Typography variant="h5" component="h2" gutterBottom>
         Upcoming events
       </Typography>
-      <EventsCardGrid edges={upcoming.edges} />
+      <EventsCardGrid
+        edges={upcoming.edges}
+        noEventsMessage="No upcoming events, check back later!"
+      />
       <Divider />
       <Typography variant="h5" component="h2" gutterBottom>
         Past events
       </Typography>
-      <EventsCardGrid edges={past.edges} />
+      <EventsCardGrid edges={past.edges} noEventsMessage="No past events." />
     </Layout>
   );
 };

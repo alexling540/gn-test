@@ -52,7 +52,10 @@ const IndexPage = ({ data: { upcomingEvents } }) => {
       <Typography variant="h5" component="h2" gutterBottom>
         Upcoming Events &amp; Workshops
       </Typography>
-      <EventsCardGrid edges={upcomingEvents.edges} />
+      <EventsCardGrid
+        edges={upcomingEvents.edges}
+        noEventsMessage="No upcoming events, check back later!"
+      />
     </Layout>
   );
 };

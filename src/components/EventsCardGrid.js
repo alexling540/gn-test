@@ -3,10 +3,10 @@ import { Grid, Typography } from "@mui/material";
 
 import EventCard from "./EventCard";
 
-const EventsCardGrid = ({ edges }) => {
+const EventsCardGrid = ({ edges, noEventsMessage = "No events" }) => {
   return edges.length === 0 ? (
     <Typography variant="body1" paragraph gutterBottom>
-      No events
+      {noEventsMessage}
     </Typography>
   ) : (
     <Grid

@@ -14,7 +14,7 @@ collections:
     folder: src/content/events
     create: true
     slug: "{{year}}{{month}}{{day}}_{{eventName}}"
-    summary: "{{eventName}} ({{eventDate}})"
+    summary: "{{eventName}}"
     sortable_fields: ["eventDate"]
     fields:
       - name: eventName

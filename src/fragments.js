@@ -8,10 +8,11 @@ const eventMarkdownFrontmatterFragment = graphql`
       banner: eventBanner
       description: eventDescription
       location: eventLocation
-      speakers: eventSpeakers
     }
   }
 `;
+
+// speakers: eventSpeakers;
 
 const personMarkdownFrontmatterFragment = graphql`
   fragment PersonMarkdownFrontmatterFragment on Mdx {
