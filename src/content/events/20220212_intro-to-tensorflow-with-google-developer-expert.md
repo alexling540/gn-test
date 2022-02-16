@@ -8,6 +8,4 @@ Howdy!
 
 We are proud to present to you a hands-on introductory workshop on TensorFlow, in collaboration with Henry Ruiz, who is a Google Developer Expert in Machine Learning. Attend this beginner friendly event to dive into the basics of ML through TensorFlow, and learn how to get started with this amazing library!
 
-
-
 Zoom Link: <https://tamu.zoom.us/j/98392891883?pwd=eTdFeUQ4ajNJY29mZ21GRTBZdzVNQT09>

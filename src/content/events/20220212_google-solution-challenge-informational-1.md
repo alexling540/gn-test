@@ -1,6 +1,7 @@
 ---
 eventName: Google Solution Challenge Informational
 eventDate: 2022-02-11T00:30:51.047Z
+eventBanner: /assets/solution-challenge-banner.webp
 eventLocation: Remote
 eventDescription: Solution Challenge Event
 ---
@@ -11,7 +12,5 @@ The Google Developer Student Club at Texas A&M University will be hosting a Goog
 Go ahead and RSVP for this event if you're interested! And if you haven't already, join our Slack at [tx.ag/gdscslack](https://tx.ag/gdscslack). We will be using it for communication throughout the year, and it's a great place to network with your peers.
 
 Zoom Link: <https://tamu.zoom.us/j/94355744550?pwd=YkpQVkkxN2JvZEJJOHFobkZyQ3MwZz09>
-
-
 
 Looking forward to seeing all of you at the event on Thursday! Thanks and gig 'em!
