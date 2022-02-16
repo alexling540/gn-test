@@ -1,6 +1,7 @@
 ---
 eventName: Google Solution Challenge Informational
 eventDate: 2021-11-19T00:30:11.976Z
+eventBanner: /assets/solution-challenge-banner.webp
 eventLocation: PETR 118 in L.F. Peterson Building - 435 Nagle Street College Station, 77840
 eventDescription: Solution Challenge Event
 ---
