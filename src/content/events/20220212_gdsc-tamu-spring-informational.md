@@ -10,6 +10,4 @@ Join us to hear about all the exciting things that GDSC TAMU has in store for yo
 * Get to know the TAMU GDSC team
 * Stay connected and keep an eye out for our next event!
 
-
-
 Zoom Link: <https://tamu.zoom.us/j/94448819016?pwd=enZpT2M5NFhWNkpJUS9TeStEM2hndz09>
