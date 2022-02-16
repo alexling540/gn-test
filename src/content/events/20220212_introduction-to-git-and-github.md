@@ -1,6 +1,7 @@
 ---
 eventName: Introduction to Git and GitHub
 eventDate: 2021-10-21T23:30:35.348Z
+eventBanner: /assets/intro-to-git-and-github-banner.webp
 eventLocation: PETR 118 in L.F. Peterson Building - 435 Nagle Street College Station, 77840
 eventDescription: Hands-on Workshop
 ---
