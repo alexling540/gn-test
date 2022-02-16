@@ -11,11 +11,7 @@ Join us to hear about all the exciting things that GDSC TAMU has in store for yo
 * Get to know the TAMU GDSC team
 * Stay connected and keep an eye out for our next event!
 
-
-
 Join our Slack because that's where all communications happen: [tx.ag/dscslack](https://tx.ag/dscslack)!
-
-
 
 Add us on social media to stay updated about our future events:
 
