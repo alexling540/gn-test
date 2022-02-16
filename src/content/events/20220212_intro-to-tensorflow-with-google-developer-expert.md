@@ -1,6 +1,7 @@
 ---
 eventName: " Intro to TensorFlow with Google Developer Expert "
 eventDate: 2021-09-30T23:30:17.527Z
+eventBanner: /assets/intro-to-tensorflow-banner.webp
 eventLocation: PETR 118 in L.F. Peterson Building - 435 Nagle Street College Station, 77840
 eventDescription: Hands-on Workshop
 ---
