@@ -34,37 +34,41 @@ const EventPageTemplate = ({
       <Box
         style={{
           background: banner
-            ? `linear-gradient(90deg, rgb(255, 255, 255) 0%, transparent 25%, transparent 75%, rgb(255, 255, 255) 100%), url(${banner})`
+            ? `linear-gradient(90deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.55) 50%, rgba(0, 0, 0, 0.65) 100%), url(${banner}) 0% 0%/cover`
             : "lightgrey",
         }}
         sx={{
           backgroundSize: "auto, cover",
           backgroundPosition: "0 0, center",
-          padding: { xs: "3em 16px", sm: "3em 24px" },
+          padding: { xs: "5em 16px", sm: "5em 24px" },
           margin: { xs: "0 -16px 32px", sm: "0 -24px 32px" },
         }}
       >
-        <Typography variant="h4" component="h1">
+        <Typography variant="h4" component="h1" color="white">
           {name}
         </Typography>
 
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" component="div" color="white">
           <Moment date={date} tz="America/Chicago" format="LLLL" />
         </Typography>
 
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" component="div" color="white">
           {location}
         </Typography>
       </Box>
 
       {speakers && <SpeakersSection speakers={speakers} />}
 
-      {body && (
+      <Typography variant="h5" component="h2" gutterbottom>
+        About this event
+      </Typography>
+      {body ? (
         <MDXProvider components={shortcodes}>
           <MDXRenderer>{body}</MDXRenderer>
         </MDXProvider>
+      ) : (
+        html
       )}
-      {html}
     </React.Fragment>
   );
 };

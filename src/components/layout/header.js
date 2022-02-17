@@ -80,7 +80,7 @@ const Header = ({ id, window, siteTitle }) => {
             <Grid item xs="auto">
               <Button
                 component={Link}
-                to="/join"
+                to="/join-us"
                 variant="contained"
                 disableElevation
                 size="small"

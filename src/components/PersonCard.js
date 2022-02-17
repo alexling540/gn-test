@@ -18,7 +18,7 @@ import DefaultProfilePicture from "../images/default_profile_picture.jpg";
 const IconLink = ({ link, icon: Icon }) => {
   return (
     <a href={link}>
-      <Icon fontSize="large" />
+      <Icon fontSize="large" color="primary" />
     </a>
   );
 };

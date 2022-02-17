@@ -11,24 +11,25 @@ const ProjectPageTemplate = ({ name, banner, html, body }) => {
       <Box
         style={{
           background: banner
-            ? `linear-gradient(90deg, rgb(255, 255, 255) 0%, transparent 25%, transparent 75%, rgb(255, 255, 255) 100%), url(${banner}) 0% 0%/cover`
+            ? `linear-gradient(90deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.55) 50%, rgba(0, 0, 0, 0.65) 100%), url(${banner}) 0% 0%/cover`
             : "lightgrey",
         }}
         sx={{
-          padding: { xs: "4em 16px", sm: "4em 24px" },
+          padding: { xs: "5em 16px", sm: "5em 24px" },
           margin: { xs: "0 -16px 32px", sm: "0 -24px 32px" },
         }}
       >
-        <Typography variant="h4" component="h1">
+        <Typography variant="h4" component="h1" color="white">
           {name}
         </Typography>
       </Box>
-      {body && (
+      {body ? (
         <MDXProvider components={shortcodes}>
           <MDXRenderer>{body}</MDXRenderer>
         </MDXProvider>
+      ) : (
+        html
       )}
-      {html}
     </React.Fragment>
   );
 };

@@ -25,7 +25,7 @@ const Footer = ({ id }) => {
     <Box
       id={id}
       component="footer"
-      sx={{ marginTop: "2rem", background: "black", padding: "3em" }}
+      sx={{ marginTop: "3rem", background: "black", padding: "3em" }}
     >
       <Grid
         container
