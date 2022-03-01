@@ -44,15 +44,27 @@ const EventPageTemplate = ({
           margin: { xs: "0 -16px 32px", sm: "0 -24px 32px" },
         }}
       >
-        <Typography variant="h4" component="h1" color="white">
+        <Typography
+          variant="h4"
+          component="h1"
+          color={banner ? "white" : "black"}
+        >
           {name}
         </Typography>
 
-        <Typography variant="h5" component="div" color="white">
+        <Typography
+          variant="h5"
+          component="div"
+          color={banner ? "white" : "black"}
+        >
           <Moment date={date} tz="America/Chicago" format="LLLL" />
         </Typography>
 
-        <Typography variant="h5" component="div" color="white">
+        <Typography
+          variant="h5"
+          component="div"
+          color={banner ? "white" : "black"}
+        >
           {location}
         </Typography>
       </Box>

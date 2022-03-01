@@ -2,9 +2,10 @@
 eventName: Google Solution Challenge Informational
 eventDate: 2022-02-11T00:30:51.047Z
 eventBanner: /assets/solution-challenge-banner.webp
-eventLocation: Remote
+eventLocation: Virtual
 eventDescription: Solution Challenge Event
 ---
+
 Howdy!
 
 The Google Developer Student Club at Texas A&M University will be hosting a Google Solution Challenge Informational on Thursday Feb 10th from 6:30-7:30 PM CDT. We will be giving an overview of what the Google Solution Challenge is and how you can participate and compete in this annual event! We'll be providing you with all of the resources you'll need to get started but make sure to come prepared with any questions you might have.
