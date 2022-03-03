@@ -104,3 +104,44 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
   }
 };
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  createTypes(`
+    type Mdx implements Node {
+      frontmatter: Frontmatter
+      fields: Fields
+    }
+
+    type PersonName {
+      first: String!
+      last: String!
+    }
+
+    type Frontmatter {
+      eventName: String!
+      eventLocation: String!
+      eventDescription: String!
+      eventDate: Date!
+      eventBanner: String
+      personGitHub: String
+      personIntro: String
+      personName: PersonName!
+      personLinkedIn: String
+      personPersonalWebsite: String
+      personPicture: String
+      personRole: String!
+      projectBanner: String
+      projectDescription: String
+      projectIsActive: Boolean!
+      projectName: String!
+    }
+
+    type Fields {
+      collection: String
+      isFuture: Boolean
+      slug: String
+    }
+  `);
+};
