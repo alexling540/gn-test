@@ -10,12 +10,6 @@ const EventPagePreview = ({ entry, widgetFor, widgetsFor }) => {
       banner={entry.getIn(["data", "eventBanner"])}
       description={entry.getIn(["data", "eventDescription"])}
       location={entry.getIn(["data", "eventLocation"])}
-      speakers={widgetsFor("eventSpeakers").map((speaker) => {
-        if (speaker) {
-          return speaker.getIn("personPicture");
-        }
-        return "oh no";
-      })}
       html={widgetFor("body")}
     />
   );

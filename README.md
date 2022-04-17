@@ -35,6 +35,10 @@ src
  ⌞components
   ⌞layout
   ⌞templates
+ ⌞content
+  ⌞ events
+  ⌞ people
+  ⌞ projects
  ⌞images
  ⌞page-templates
  ⌞pages
@@ -49,6 +53,10 @@ static
   - components: Reusuable components
     - layout: Main layout templates
     - templates: Content templates to render content, used in components found in cms/preview-templates and page-templates folders
+  - content: Location of all the markdown files containing page information
+    - events: Markdown files containing information about events
+    - people: Markdown files containing information about people
+    - projects: Markdown files containing information about projects
   - page-templates: Templates used for making pages based on markdown files created by CMS
   - pages: Pages to be generated, the path of a file is the exact path of the page
 - static

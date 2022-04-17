@@ -12,8 +12,6 @@ const eventMarkdownFrontmatterFragment = graphql`
   }
 `;
 
-// speakers: eventSpeakers;
-
 const personMarkdownFrontmatterFragment = graphql`
   fragment PersonMarkdownFrontmatterFragment on Mdx {
     frontmatter {

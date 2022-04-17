@@ -4,10 +4,15 @@
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
+/**
+ * Helper function to create pages based with given template
+ * @param {function} createPage - The createPage funtion provided by Gatsby
+ * @param {string} template - The name of the JavaScript file containing the template
+ * @returns {(node) => void}
+ */
 const createPageFromMarkdown = (createPage, template) => {
   const templatePath = "./src/page-templates";
 
@@ -28,6 +33,9 @@ const createPageFromMarkdown = (createPage, template) => {
   };
 };
 
+/*
+ * Gets all events and projects using GraphQL, then creates pages using the templates
+ */
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
@@ -77,6 +85,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   );
 };
 
+/*
+ * Customizations for GraphQL nodes created from markdown files
+ */
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNode, createNodeField, createNodeId } = actions;
 
@@ -95,6 +106,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value: `/${collection}${slug}`,
     });
 
+    // For events, add a field depending on if the event has occured or hasn't occured yet
     if (collection === "events") {
       createNodeField({
         node,
@@ -105,6 +117,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
+/*
+ * Defines custom GraphQL schema to bypass schema inference
+ */
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
@@ -136,6 +151,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       projectDescription: String
       projectIsActive: Boolean!
       projectName: String!
+      projectTeam: [Mdx] @link(by: "slug")
     }
 
     type Fields {
