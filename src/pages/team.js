@@ -10,7 +10,7 @@ const TeamPage = ({ data: { president, vicePresident, officers } }) => {
   return (
     <Layout>
       <Typography variant="h4" component="h1" sx={{ padding: "2em 0 1em" }}>
-        Team
+        Our Team
       </Typography>
       <Grid
         container
